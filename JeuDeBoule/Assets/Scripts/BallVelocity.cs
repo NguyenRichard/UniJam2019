@@ -58,6 +58,7 @@ public class BallVelocity : MonoBehaviour
     {
         rb.velocity = new Vector3(speedX, 0, speedZ);
         regenerateDashBar();
+        Debug.Log("ho");
     }
 
     public void StartDash(float x, float z)
@@ -75,7 +76,7 @@ public class BallVelocity : MonoBehaviour
 
     IEnumerator Dash()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.4f);
         isDashing = false;
         speedX = 0;
         speedZ = 0;
@@ -106,24 +107,8 @@ public class BallVelocity : MonoBehaviour
         {
             return;
         }
-        if (Mathf.Abs(speedX) < Mathf.Abs(max_speed * x))
-        {
-            speedX = Mathf.Lerp(speedX, x * max_speed, Time.deltaTime*8);
-        }
-        else
-        {
-            speedX = Mathf.Lerp(speedX, x * max_speed, Time.deltaTime/4);
-        }
+        speedX = Mathf.Lerp(speedX, x * max_speed, Time.deltaTime*2);
+        speedZ = Mathf.Lerp(speedZ, z * max_speed, Time.deltaTime*2);
 
-        if (Mathf.Abs(speedZ) < Mathf.Abs(max_speed * z))
-        {
-
-            speedZ = Mathf.Lerp(speedZ, z * max_speed, Time.deltaTime*8);
-        }
-        else
-        {
-            speedZ = Mathf.Lerp(speedZ, z * max_speed, Time.deltaTime/4);
-
-        }
     }
 }
