@@ -22,14 +22,14 @@ public class StartGUI : MonoBehaviour
     public void Awake()
     {
         introMenu.SetActive(true);
-        gameMenu.SetActive(false);
+        //gameMenu.SetActive(false);
     }
 
     public void StartGame()
     {
         isDisappear = true;
-        jauge.GetComponent<JaugeController>().Point = 20;
-        gameMenu.SetActive(true);
+        //gameMenu.SetActive(true);
+        jauge.GetComponent<JaugeController>().Point = 10;
     }
 
     public void Update()

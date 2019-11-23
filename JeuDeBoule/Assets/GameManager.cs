@@ -6,6 +6,11 @@ public class GameManager : MonoBehaviour
 {
     static GameManager instance;
 
+    [SerializeField]
+    GameObject jaugeScore;
+
+    JaugeController jaugeController;
+
     public static GameManager Instance
     {
         get
@@ -33,6 +38,12 @@ public class GameManager : MonoBehaviour
         }
         return coffreLePlusProche;
     }
+
+    public void UpdateJauge(float value)
+    {
+        jaugeController.Point += value;
+    }
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -55,6 +66,9 @@ public class GameManager : MonoBehaviour
         {
             listSorties.Add(sortie.transform);
         }
+
+        // Retrieve jauge controller
+        jaugeController = jaugeScore.GetComponent<JaugeController>();
 
         StartCoroutine(SpawnCoroutine());
     }

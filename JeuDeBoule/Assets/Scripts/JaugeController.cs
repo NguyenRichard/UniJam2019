@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class JaugeController : MonoBehaviour
 {
@@ -8,6 +9,16 @@ public class JaugeController : MonoBehaviour
 
     [SerializeField]
     int maxPoints = 100;
+
+    [SerializeField]
+    GameObject rawColor;
+
+    RawImage rColor;
+
+    public void Awake()
+    {
+        rColor = GameObject.Find("JaugeScore/Color").GetComponent<RawImage>();
+    }
 
     public float Point
     {
@@ -37,5 +48,16 @@ public class JaugeController : MonoBehaviour
         tempScale.y = 0f + (point / maxPoints) * 128f;
         gameObject.GetComponent<RectTransform>().localPosition = tempPos;
         gameObject.GetComponent<RectTransform>().sizeDelta = tempScale;
+
+        Debug.Log((point / maxPoints) * 255);
+
+        if (point > maxPoints / 2)
+        {
+            rColor.color = new Color(255, 255, 0);
+        }
+        else
+        {
+            rColor.color = new Color(255, 0, 0);
+        }
     }
 }

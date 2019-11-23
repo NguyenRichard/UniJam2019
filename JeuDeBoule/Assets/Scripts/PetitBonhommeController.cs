@@ -21,12 +21,15 @@ public class PetitBonhommeController : MonoBehaviour
 
     [SerializeField]
     protected Camera cam;
+
     public Camera Cam
     {
         set { cam = value; }
     }
+
     [SerializeField]
     protected NavMeshAgent agent;
+
     [SerializeField]
     private PilleurAnimator pilleurAnimator;
     private Vector3 currentDestination;
@@ -39,9 +42,11 @@ public class PetitBonhommeController : MonoBehaviour
 
     private bool isDead = false;
 
+    GameManager gameManager;
+
     private void Start()
     {
-        GameManager gameManager = GameManager.Instance;
+        gameManager = GameManager.Instance;
         currentDestination = gameManager.GetCoffre(gameObject.transform.position);
         agent.SetDestination(currentDestination);
         agent.speed = normalSpeed;
@@ -70,6 +75,7 @@ public class PetitBonhommeController : MonoBehaviour
 
         if (Vector3.Distance(sortie, gameObject.transform.position) < 1)
         {
+            gameManager.UpdateJauge(-10);
             Destroy(gameObject);
         }
 
@@ -89,6 +95,7 @@ public class PetitBonhommeController : MonoBehaviour
             audioSource.clip = laMort;
             audioSource.Play();
             isDead = true;
+            gameManager.UpdateJauge(5);
         }
        
     }
