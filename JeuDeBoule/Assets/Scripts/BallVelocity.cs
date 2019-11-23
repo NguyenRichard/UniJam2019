@@ -42,8 +42,6 @@ public class BallVelocity : MonoBehaviour
     float speedY;
     float speedZ;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -105,7 +103,24 @@ public class BallVelocity : MonoBehaviour
                 GameManager.Instance.Defeat();
             }
         }
+
+        if (collision.gameObject.CompareTag("Chevalier"))
+        {
+            if (isDashing)
+            {
+                collision.gameObject.GetComponent<ChevalierController>().Die();
+                Debug.Log("Le chevalier meurt");
+            }
+            else
+            {
+                Debug.Log("KICKING IN THE BALLZ");
+                collision.gameObject.GetComponent<ChevalierController>().KickTheFoockingBall();
+                speedX = - speedX * 2;
+                speedZ = -speedZ * 2;
+            }
+        }
     }
+
 
     public void SetSpeed(float x, float z)
     {

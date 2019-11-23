@@ -9,6 +9,7 @@ TagManager:
   - Sortie
   - Ball
   - Wall
+  - Chevalier
   layers:
   - Default
   - TransparentFX

@@ -66,7 +66,7 @@ public class ChevalierController : MonoBehaviour
         }
 
     }
-    private void Die()
+    public void Die()
     {
         if (!isDead)
         {
@@ -80,15 +80,9 @@ public class ChevalierController : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Ball"))
-        {
-            Die();
-        }
-    }
+    
 
-    private void KickTheFoockingBall()
+    public void KickTheFoockingBall()
     {
         audioSource.clip = kickTheBall;
         audioSource.Play();

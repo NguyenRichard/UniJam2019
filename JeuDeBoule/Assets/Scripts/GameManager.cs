@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(10);
         }
     }
+
     public void Defeat()
     {
         SceneManager.LoadScene("GameOver");
