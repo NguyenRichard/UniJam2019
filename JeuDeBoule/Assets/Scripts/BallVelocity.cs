@@ -12,6 +12,11 @@ public class BallVelocity : MonoBehaviour
     private float dash_speed = 4;
 
     private bool isDashing = false;
+    public bool IsDashing
+    {
+        get { return isDashing; }
+    }
+
     private Vector3 dash_direction;
 
     [SerializeField]
@@ -104,21 +109,6 @@ public class BallVelocity : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.CompareTag("Chevalier"))
-        {
-            if (isDashing)
-            {
-                collision.gameObject.GetComponent<ChevalierController>().Die();
-                Debug.Log("Le chevalier meurt");
-            }
-            else
-            {
-                Debug.Log("KICKING IN THE BALLZ");
-                collision.gameObject.GetComponent<ChevalierController>().KickTheFoockingBall();
-                speedX = - speedX * 2;
-                speedZ = -speedZ * 2;
-            }
-        }
     }
 
 
@@ -133,4 +123,9 @@ public class BallVelocity : MonoBehaviour
 
     }
 
+    public void Rebound()
+    {
+        speedX = -speedX * 2;
+        speedZ = -speedZ * 2;
+    }
 }

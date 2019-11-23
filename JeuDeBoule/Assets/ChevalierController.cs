@@ -51,7 +51,7 @@ public class ChevalierController : MonoBehaviour
         {
             agent.SetDestination(sortie);
             agent.speed = agent.speed * heavySpeed;
-            pilleurAnimator.PickObject();
+          //  pilleurAnimator.PickObject();
             hasPicked = true;
         }
 
@@ -70,7 +70,7 @@ public class ChevalierController : MonoBehaviour
     {
         if (!isDead)
         {
-            pilleurAnimator.Die();
+            //pilleurAnimator.Die();
             agent.speed = 0;
             agent.enabled = false;
             audioSource.clip = laMort;
@@ -80,7 +80,25 @@ public class ChevalierController : MonoBehaviour
 
     }
 
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("collide");
+        if (other.gameObject.CompareTag("Ball"))
+        {
+            Debug.Log("ball");
+            BallVelocity ballVelocity = other.gameObject.GetComponent<BallVelocity>();
+            if (ballVelocity.IsDashing)
+            {
+                Die();
+            }
+            else
+            {
+                Debug.Log("rebound");
+                ballVelocity.Rebound();
+            }
+        }
+    }
+
 
     public void KickTheFoockingBall()
     {
