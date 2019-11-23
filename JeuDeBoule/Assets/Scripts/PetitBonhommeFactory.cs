@@ -31,6 +31,7 @@ public class PetitBonhommeFactory : MonoBehaviour
     [SerializeField]
     Camera cam;
 
+    //instancie un petit bonhomme qui pars de l'entree va choper le coffre le plus prhce a vol d'oiseau et raprs a une sortie
     public void CreatePetitBonhomme(Transform entree, Transform sortie)
     {
         GameObject petitBonhomme = Instantiate(petitBonhommePrefabs,entree) as GameObject;

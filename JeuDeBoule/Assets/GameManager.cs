@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     private List<Transform> listSorties = new List<Transform>();
     private List<Transform> listCoffres = new List<Transform>();
 
+    // retourne le coffre le plus proche a vol d'oiseau
     public Vector3 GetCoffre(Vector3 position)
     {
         Vector3 coffreLePlusProche = listCoffres[0].position;
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
         }
         instance = this;
 
-
+        //On remplis les listes de coffres , d'entree et de sortie au debut (avec les tags correspondant)
         foreach (var coffre in GameObject.FindGameObjectsWithTag("Coffre"))
         {
             listCoffres.Add(coffre.transform);
@@ -65,10 +66,11 @@ public class GameManager : MonoBehaviour
 
         while (true)
         {
+            //On choisis une entree et une sortie aleatoirement
             int i = Random.Range(0, listEntrees.Count);
             int j = Random.Range(0, listSorties.Count);
             PetitBonhommeFactory.Instance.CreatePetitBonhomme(listEntrees[i], listSorties[j]);
-
+            //Delai de 5s entre chaque spawn de bonhomme
             yield return new WaitForSeconds(5);
         }
     }
