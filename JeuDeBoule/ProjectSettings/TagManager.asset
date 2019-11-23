@@ -8,6 +8,7 @@ TagManager:
   - Entree
   - Sortie
   - Ball
+  - Wall
   layers:
   - Default
   - TransparentFX

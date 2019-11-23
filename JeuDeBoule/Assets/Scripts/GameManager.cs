@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -76,6 +77,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     IEnumerator SpawnChevalierCoroutine()
     {
         yield return new WaitForSeconds(4); //Init time
@@ -89,5 +91,10 @@ public class GameManager : MonoBehaviour
             //Delai de 5s entre chaque spawn de bonhomme
             yield return new WaitForSeconds(10);
         }
+    }
+    public void Defeat()
+    {
+        SceneManager.LoadScene("GameOver");
+
     }
 }
