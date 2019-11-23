@@ -16,6 +16,15 @@ public class BallVelocity : MonoBehaviour
 
     private bool grounded = false;
 
+    private float dashEnergyBar;
+
+    private Vector3 direction;
+    public Vector3 Direction
+    {
+        get { return direction; }
+        set { direction = value; }
+    }
+
     Rigidbody rb;
 
     float speedX;
@@ -33,22 +42,8 @@ public class BallVelocity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (grounded)
-        {
-            if (!isDashing)
-            {
-                speedX = (Mathf.Abs(rb.velocity.x) > max_speed) ? max_speed * Mathf.Sign(rb.velocity.x) : rb.velocity.x;
-                speedZ = (Mathf.Abs(rb.velocity.z) > max_speed) ? max_speed * Mathf.Sign(rb.velocity.z) : rb.velocity.z;
-
-                rb.velocity = new Vector3(speedX, 0, speedZ);
-            }
-            else
-            {
-                rb.velocity = dash_direction * dash_speed;
-            }
-        }
-
-
+        Debug.Log(speedX + "," + speedZ);
+        rb.velocity = new Vector3(speedX, 0, speedZ);
     }
 
     public void StartDash(float x, float z)
@@ -57,13 +52,15 @@ public class BallVelocity : MonoBehaviour
         {
             isDashing = true;
             dash_direction = new Vector3(x, 0, z).normalized;
+            speedX = dash_direction.x*dash_speed;
+            speedZ = dash_direction.z*dash_speed;
             StartCoroutine("Dash");
         }
     }
 
     IEnumerator Dash()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.2f);
         isDashing = false;
     }
 
@@ -71,5 +68,32 @@ public class BallVelocity : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         grounded = true;
+    }
+
+    public void SetSpeed(float x, float z)
+    {
+        if (isDashing)
+        {
+            return;
+        }
+        if (Mathf.Abs(speedX) < Mathf.Abs(max_speed * x))
+        {
+            speedX = Mathf.Lerp(speedX, x * max_speed, Time.deltaTime*30);
+        }
+        else
+        {
+            speedX = Mathf.Lerp(speedX, x * max_speed, Time.deltaTime/8);
+        }
+
+        if (Mathf.Abs(speedZ) < Mathf.Abs(max_speed * z))
+        {
+
+            speedZ = Mathf.Lerp(speedZ, z * max_speed, Time.deltaTime*30);
+        }
+        else
+        {
+            speedZ = Mathf.Lerp(speedZ, z * max_speed, Time.deltaTime/8);
+
+        }
     }
 }
