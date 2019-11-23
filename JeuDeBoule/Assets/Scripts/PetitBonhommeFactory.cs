@@ -38,6 +38,7 @@ public class PetitBonhommeFactory : MonoBehaviour
     {
         GameObject petitBonhomme = Instantiate(petitBonhommePrefabs,depart) as GameObject;
         petitBonhomme.GetComponent<PetitBonhommeController>().Cam = cam;
+        petitBonhomme.GetComponent<PetitBonhommeController>().Sortie = sortie.position;
 
     }
 
