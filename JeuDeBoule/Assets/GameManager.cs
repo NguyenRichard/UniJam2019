@@ -14,13 +14,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    private List<Transform> listEntrees = new List<Transform>();
+    private List<Transform> listSorties = new List<Transform>();
     private List<Transform> listCoffres = new List<Transform>();
-    public List<Transform> ListCoffres
-    {
-        get { return listCoffres; }
-    }
 
+    // retourne le coffre le plus proche a vol d'oiseau
     public Vector3 GetCoffre(Vector3 position)
     {
         Vector3 coffreLePlusProche = listCoffres[0].position;
@@ -44,10 +42,18 @@ public class GameManager : MonoBehaviour
         }
         instance = this;
 
-
+        //On remplis les listes de coffres , d'entree et de sortie au debut (avec les tags correspondant)
         foreach (var coffre in GameObject.FindGameObjectsWithTag("Coffre"))
         {
             listCoffres.Add(coffre.transform);
+        }
+        foreach (var entree in GameObject.FindGameObjectsWithTag("Entree"))
+        {
+            listEntrees.Add(entree.transform);
+        }
+        foreach (var sortie in GameObject.FindGameObjectsWithTag("Sortie"))
+        {
+            listSorties.Add(sortie.transform);
         }
 
         StartCoroutine(SpawnCoroutine());
@@ -56,13 +62,16 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SpawnCoroutine()
     {
-        yield return new WaitForSeconds(10); //Init time
+        yield return new WaitForSeconds(2); //Init time
 
         while (true)
         {
-            PetitBonhommeFactory.Instance.CreatePetitBonhomme();
-
-            yield return new WaitForSeconds(10);
+            //On choisis une entree et une sortie aleatoirement
+            int i = Random.Range(0, listEntrees.Count);
+            int j = Random.Range(0, listSorties.Count);
+            PetitBonhommeFactory.Instance.CreatePetitBonhomme(listEntrees[i], listSorties[j]);
+            //Delai de 5s entre chaque spawn de bonhomme
+            yield return new WaitForSeconds(5);
         }
     }
 }

@@ -12,12 +12,15 @@ public class PilleurAnimator : MonoBehaviour
     [SerializeField]
     GameObject particle;
 
+    [SerializeField]
+    private GameObject tresorPrefabs;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
         Debug.Assert(animator, "Animtor can't be null");
         Debug.Assert(holdingTransform, "Transform can't be null");
-
+        tresorPrefabs.SetActive(false);
         animator.SetBool("isWalking", true);
     }
 
@@ -32,9 +35,10 @@ public class PilleurAnimator : MonoBehaviour
         particle.SetActive(true);
     }
 
-    public void PickObject(GameObject obj)
+    public void PickObject()
     {
-        obj.transform.parent = holdingTransform;
+        tresorPrefabs.SetActive(true);
+
         animator.SetBool("isWalking", false);
     }
 }
