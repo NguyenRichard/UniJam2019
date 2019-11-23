@@ -17,7 +17,7 @@ public class InputController : MonoBehaviour
 
     private Renderer renderer;
 
-    private float max_degree = 15;
+    private float max_degree = 10;
 
     private void Start()
     {

@@ -42,7 +42,6 @@ public class BallVelocity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(speedX + "," + speedZ);
         rb.velocity = new Vector3(speedX, 0, speedZ);
     }
 
@@ -60,8 +59,10 @@ public class BallVelocity : MonoBehaviour
 
     IEnumerator Dash()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         isDashing = false;
+        speedX = 0;
+        speedZ = 0;
     }
 
 
