@@ -112,7 +112,7 @@ public class BallVelocity : MonoBehaviour
         }
         else
         {
-            speedX = Mathf.Lerp(speedX, x * max_speed, Time.deltaTime/8);
+            speedX = Mathf.Lerp(speedX, x * max_speed, Time.deltaTime/4);
         }
 
         if (Mathf.Abs(speedZ) < Mathf.Abs(max_speed * z))
@@ -122,7 +122,7 @@ public class BallVelocity : MonoBehaviour
         }
         else
         {
-            speedZ = Mathf.Lerp(speedZ, z * max_speed, Time.deltaTime/8);
+            speedZ = Mathf.Lerp(speedZ, z * max_speed, Time.deltaTime/4);
 
         }
     }

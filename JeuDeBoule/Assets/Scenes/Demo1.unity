@@ -530,7 +530,7 @@ PrefabInstance:
     - target: {fileID: 8004164930986162242, guid: 1136e45ab9179bf418da8df3880314ed,
         type: 3}
       propertyPath: dash_speed
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1136e45ab9179bf418da8df3880314ed, type: 3}
