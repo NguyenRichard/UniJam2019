@@ -10,21 +10,24 @@ public class InputController2 : MonoBehaviour
     [SerializeField]
     private Transform dungeon;
 
-    [SerializeField]
     private GameObject ball;
 
     private BallVelocity ballVelocity;
 
-    private Renderer renderer;
+   // private Renderer renderer;
 
-    private float max_degree = 15;
+    private float max_degree = 10;
+    private float currentXdegree = 0;
+    private float currentZdegree = 0;
 
     private float inputX = 0;
     private float inputY = 0;
 
     private void Start()
     {
-       // renderer = testJoystick.GetComponent<Renderer>();
+        ball = GameObject.FindGameObjectWithTag("Ball");
+        Debug.Assert(ballVelocity, "You must add the ball in the scene");
+        // renderer = testJoystick.GetComponent<Renderer>();
         ballVelocity = ball.GetComponent<BallVelocity>();
         Debug.Assert(ballVelocity, "You must add BallVelocity component to the ball");
     }
@@ -62,7 +65,9 @@ public class InputController2 : MonoBehaviour
         inputX = Input.GetAxis("Horizontal");
         inputY = Input.GetAxis("Vertical");
 
-        dungeon.eulerAngles = new Vector3(-convertToDegree(inputY), 0, convertToDegree(inputX));
+        currentXdegree = Mathf.Lerp(currentXdegree, -convertToDegree(inputY), Time.deltaTime);
+        currentZdegree = Mathf.Lerp(currentZdegree, convertToDegree(inputX),Time.deltaTime);
+        dungeon.eulerAngles = new Vector3(currentXdegree, 0, currentZdegree);
         ballVelocity.SetSpeed(inputX, inputY);
       //  ballVelocity.Direction = new Vector3(inputX, 0, inputY);
         //testJoystick.transform.position = new Vector2(posX, posY);

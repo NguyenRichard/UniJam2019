@@ -96,6 +96,7 @@ public class PetitBonhommeController : MonoBehaviour
             audioSource.Play();
             isDead = true;
             gameManager.UpdateJauge(5);
+            Destroy(gameObject, 30);
         }
        
     }

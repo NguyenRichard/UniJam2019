@@ -49,5 +49,9 @@ public class StartGUI : MonoBehaviour
                 introMenu.SetActive(false);
             }
         }
+        if (Input.GetButton("Submit"))
+        {
+            StartGame();
+        }
     }
 }

@@ -12,9 +12,12 @@ public class BallVelocity : MonoBehaviour
     private float dash_speed = 4;
 
     private bool isDashing = false;
-    private Vector3 dash_direction;
+    public bool IsDashing
+    {
+        get { return isDashing; }
+    }
 
-    private bool grounded = false;
+    private Vector3 dash_direction;
 
     [SerializeField]
     private int maxDashBar = 100;
@@ -25,10 +28,11 @@ public class BallVelocity : MonoBehaviour
     [SerializeField]
     private float dashRegenTimeRate = 1;
     private float nextRegen;
-
     private int dashBar;
-
     private float dashEnergyBar;
+
+    [SerializeField]
+    private float defeatMultiplier = 0.8f;
 
     private Vector3 direction;
     public Vector3 Direction
@@ -42,8 +46,6 @@ public class BallVelocity : MonoBehaviour
     float speedX;
     float speedY;
     float speedZ;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -75,10 +77,10 @@ public class BallVelocity : MonoBehaviour
 
     IEnumerator Dash()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.4f);
         isDashing = false;
-        speedX = 0;
-        speedZ = 0;
+        speedX = speedX/2;
+        speedZ = speedZ/2;
     }
 
     private void regenerateDashBar()
@@ -94,11 +96,21 @@ public class BallVelocity : MonoBehaviour
         }
     }
 
-
+    
     private void OnCollisionEnter(Collision collision)
     {
-        grounded = true;
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            if(Mathf.Sqrt(speedX*speedX+speedZ*speedZ) >= max_speed * defeatMultiplier)
+            {
+                speedX = 0;
+                speedZ = 0;
+                GameManager.Instance.Defeat();
+            }
+        }
+
     }
+
 
     public void SetSpeed(float x, float z)
     {
@@ -106,24 +118,14 @@ public class BallVelocity : MonoBehaviour
         {
             return;
         }
-        if (Mathf.Abs(speedX) < Mathf.Abs(max_speed * x))
-        {
-            speedX = Mathf.Lerp(speedX, x * max_speed, Time.deltaTime*30);
-        }
-        else
-        {
-            speedX = Mathf.Lerp(speedX, x * max_speed, Time.deltaTime/8);
-        }
+        speedX = Mathf.Lerp(speedX, x * max_speed, Time.deltaTime);
+        speedZ = Mathf.Lerp(speedZ, z * max_speed, Time.deltaTime);
 
-        if (Mathf.Abs(speedZ) < Mathf.Abs(max_speed * z))
-        {
+    }
 
-            speedZ = Mathf.Lerp(speedZ, z * max_speed, Time.deltaTime*30);
-        }
-        else
-        {
-            speedZ = Mathf.Lerp(speedZ, z * max_speed, Time.deltaTime/8);
-
-        }
+    public void Rebound()
+    {
+        speedX = -speedX * 2;
+        speedZ = -speedZ * 2;
     }
 }
