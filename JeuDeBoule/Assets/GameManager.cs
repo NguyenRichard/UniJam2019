@@ -56,13 +56,13 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SpawnCoroutine()
     {
-        yield return new WaitForSeconds(10); //Init time
+        yield return new WaitForSeconds(2); //Init time
 
         while (true)
         {
             PetitBonhommeFactory.Instance.CreatePetitBonhomme();
 
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(5);
         }
     }
 }

@@ -13,8 +13,15 @@ public class PetitBonhommeController : MonoBehaviour
     }
     [SerializeField]
     protected NavMeshAgent agent;
-
+    [SerializeField]
+    private PilleurAnimator pilleurAnimator;
     private Vector3 currentDestination;
+    bool hasPicked = false;
+    private Vector3 sortie;
+    public Vector3 Sortie
+    {
+        set { sortie = value; }
+    }
 
     private void Start()
     {
@@ -26,6 +33,11 @@ public class PetitBonhommeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            pilleurAnimator.Die();
+            agent.speed = 0;
+        }
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -36,9 +48,17 @@ public class PetitBonhommeController : MonoBehaviour
             }
         }
 
-        if (Vector3.Distance(currentDestination, gameObject.transform.position) < 0.5)
+        if (Vector3.Distance(currentDestination, gameObject.transform.position) < 1 && !hasPicked)
         {
-            //agent.SetDestination(GameManager.so)
+            agent.SetDestination(sortie);
+            agent.speed = agent.speed/3;
+            pilleurAnimator.PickObject();
+            hasPicked = true;
+        }
+
+        if (Vector3.Distance(sortie, gameObject.transform.position) < 1)
+        {
+            Destroy(gameObject);
         }
 
 
