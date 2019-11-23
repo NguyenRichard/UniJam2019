@@ -89,6 +89,7 @@ public class PetitBonhommeController : MonoBehaviour
             audioSource.clip = laMort;
             audioSource.Play();
             isDead = true;
+            Destroy(gameObject, 30);
         }
        
     }

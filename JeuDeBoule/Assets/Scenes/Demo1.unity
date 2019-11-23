@@ -525,12 +525,12 @@ PrefabInstance:
     - target: {fileID: 8004164930986162242, guid: 1136e45ab9179bf418da8df3880314ed,
         type: 3}
       propertyPath: max_speed
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8004164930986162242, guid: 1136e45ab9179bf418da8df3880314ed,
         type: 3}
       propertyPath: dash_speed
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1136e45ab9179bf418da8df3880314ed, type: 3}
@@ -6784,7 +6784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
