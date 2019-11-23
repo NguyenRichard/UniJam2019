@@ -16,6 +16,18 @@ public class BallVelocity : MonoBehaviour
 
     private bool grounded = false;
 
+    [SerializeField]
+    private int maxDashBar = 100;
+    [SerializeField]
+    private int regenDashBar = 20;
+    [SerializeField]
+    private int dashCost = 25;
+    [SerializeField]
+    private float dashRegenTimeRate = 1;
+    private float nextRegen;
+
+    private int dashBar;
+
     private float dashEnergyBar;
 
     private Vector3 direction;
@@ -36,24 +48,28 @@ public class BallVelocity : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dashBar = maxDashBar;
         rb = GetComponent<Rigidbody>();
+        nextRegen = Time.time + dashRegenTimeRate;
     }
 
     // Update is called once per frame
     void Update()
     {
         rb.velocity = new Vector3(speedX, 0, speedZ);
+        regenerateDashBar();
     }
 
     public void StartDash(float x, float z)
     {
-        if (!isDashing)
+        if (!isDashing && dashBar >= dashCost)
         {
             isDashing = true;
             dash_direction = new Vector3(x, 0, z).normalized;
             speedX = dash_direction.x*dash_speed;
             speedZ = dash_direction.z*dash_speed;
             StartCoroutine("Dash");
+            dashBar -= dashCost;
         }
     }
 
@@ -63,6 +79,19 @@ public class BallVelocity : MonoBehaviour
         isDashing = false;
         speedX = 0;
         speedZ = 0;
+    }
+
+    private void regenerateDashBar()
+    {
+        if(Time.time > nextRegen)
+        {
+            dashBar += 20;
+            if(dashBar > maxDashBar)
+            {
+                dashBar = maxDashBar;
+            }
+            nextRegen = Time.time + dashRegenTimeRate;
+        }
     }
 
 
