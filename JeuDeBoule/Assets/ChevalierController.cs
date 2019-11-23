@@ -24,7 +24,7 @@ public class ChevalierController : MonoBehaviour
     [SerializeField]
     protected NavMeshAgent agent;
     [SerializeField]
-    private PilleurAnimator pilleurAnimator;
+    private ChevalierAnimator chevalierAnimator;
     private Vector3 currentDestination;
     bool hasPicked = false;
     private Vector3 sortie;
@@ -94,6 +94,7 @@ public class ChevalierController : MonoBehaviour
             else
             {
                 Debug.Log("rebound");
+                KickTheFoockingBall();
                 ballVelocity.Rebound();
             }
         }
@@ -104,6 +105,7 @@ public class ChevalierController : MonoBehaviour
     {
         audioSource.clip = kickTheBall;
         audioSource.Play();
+        chevalierAnimator.Kick();
     }
 
 }
