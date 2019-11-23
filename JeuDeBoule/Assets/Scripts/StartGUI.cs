@@ -39,11 +39,11 @@ public class StartGUI : MonoBehaviour
             Vector3 temp = introMenu.transform.position;
             temp.y += speed * Time.deltaTime;
             introMenu.transform.position = temp;
-            gameObject.GetComponent<CanvasGroup>().alpha -= 0.05f;
+            introMenu.GetComponent<CanvasGroup>().alpha -= 0.05f;
 
             gameMenu.GetComponent<CanvasGroup>().alpha += 0.05f;
 
-            if (gameObject.GetComponent<CanvasGroup>().alpha<=0)
+            if (introMenu.GetComponent<CanvasGroup>().alpha<=0)
             {
                 isDisappear = false;
                 introMenu.SetActive(false);

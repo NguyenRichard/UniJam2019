@@ -6,6 +6,15 @@ using UnityEngine.AI;
 public class PetitBonhommeController : MonoBehaviour
 {
     [SerializeField]
+    AudioClip laMort;
+    [SerializeField]
+    AudioClip apparition;
+    [SerializeField]
+    AudioClip disparition;
+
+    [SerializeField]
+    private AudioSource audioSource;
+    [SerializeField]
     private float normalSpeed = 0.7f;
     [SerializeField]
     private float heavySpeed = 0.33f;
@@ -73,6 +82,8 @@ public class PetitBonhommeController : MonoBehaviour
         pilleurAnimator.Die();
         agent.speed = 0;
         agent.enabled = false;
+        audioSource.clip = laMort;
+        audioSource.Play();
     }
 
     private void OnTriggerEnter(Collider other)
