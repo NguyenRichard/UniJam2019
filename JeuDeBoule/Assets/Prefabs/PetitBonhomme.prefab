@@ -48,8 +48,6 @@ MonoBehaviour:
   cam: {fileID: 0}
   agent: {fileID: 7810861835260945576}
   pilleurAnimator: {fileID: 5763785542570481304}
-  tresorPrefabs: {fileID: 8018509046627494125, guid: 5fdc324bc93e6504085f10b6a3f91580,
-    type: 3}
 --- !u!195 &7810861835260945576
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -185,12 +183,12 @@ PrefabInstance:
     - target: {fileID: 6411417521323946828, guid: 5fdc324bc93e6504085f10b6a3f91580,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.0029
       objectReference: {fileID: 0}
     - target: {fileID: 6411417521323946828, guid: 5fdc324bc93e6504085f10b6a3f91580,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.0024
       objectReference: {fileID: 0}
     - target: {fileID: 6411417521323946828, guid: 5fdc324bc93e6504085f10b6a3f91580,
         type: 3}
