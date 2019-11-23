@@ -56,11 +56,12 @@ public class GameManager : MonoBehaviour
             listSorties.Add(sortie.transform);
         }
 
-        StartCoroutine(SpawnCoroutine());
+        StartCoroutine(SpawnPetitBonhommeCoroutine());
+        StartCoroutine(SpawnChevalierCoroutine());
     }
 
 
-    IEnumerator SpawnCoroutine()
+    IEnumerator SpawnPetitBonhommeCoroutine()
     {
         yield return new WaitForSeconds(2); //Init time
 
@@ -72,6 +73,21 @@ public class GameManager : MonoBehaviour
             PetitBonhommeFactory.Instance.CreatePetitBonhomme(listEntrees[i], listSorties[j]);
             //Delai de 5s entre chaque spawn de bonhomme
             yield return new WaitForSeconds(5);
+        }
+    }
+
+    IEnumerator SpawnChevalierCoroutine()
+    {
+        yield return new WaitForSeconds(4); //Init time
+
+        while (true)
+        {
+            //On choisis une entree et une sortie aleatoirement
+            int i = Random.Range(0, listEntrees.Count);
+            int j = Random.Range(0, listSorties.Count);
+            PetitBonhommeFactory.Instance.CreateChevalier(listEntrees[i], listSorties[j]);
+            //Delai de 5s entre chaque spawn de bonhomme
+            yield return new WaitForSeconds(10);
         }
     }
 }

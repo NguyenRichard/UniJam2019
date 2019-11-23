@@ -24,20 +24,23 @@ public class PetitBonhommeFactory : MonoBehaviour
         instance = this;
     }
 
-
+    [SerializeField]
+    private GameObject chevalierPrefabs;
     [SerializeField]
     private GameObject petitBonhommePrefabs;
-
-    [SerializeField]
-    Camera cam;
 
     //instancie un petit bonhomme qui pars de l'entree va choper le coffre le plus prhce a vol d'oiseau et raprs a une sortie
     public void CreatePetitBonhomme(Transform entree, Transform sortie)
     {
         GameObject petitBonhomme = Instantiate(petitBonhommePrefabs,entree) as GameObject;
-        petitBonhomme.GetComponent<PetitBonhommeController>().Cam = cam;
         petitBonhomme.GetComponent<PetitBonhommeController>().Sortie = sortie.position;
 
+    }
+
+    public void CreateChevalier(Transform entree, Transform sortie)
+    {
+        GameObject chevalier = Instantiate(chevalierPrefabs, entree) as GameObject;
+        chevalier.GetComponent<ChevalierController>().Sortie = sortie.position;
     }
 
 

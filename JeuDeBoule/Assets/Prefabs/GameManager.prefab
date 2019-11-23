@@ -44,11 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe809df47c2ed34a8db7190317b0254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chevalierPrefabs: {fileID: 1311866906238568110, guid: 81a663b067b0e9e49b04c0e0e811e227,
+    type: 3}
   petitBonhommePrefabs: {fileID: 6961601853142532488, guid: fb92e8a38d62cd848a1eceabcfde1932,
     type: 3}
-  depart: {fileID: 0}
-  sortie: {fileID: 0}
-  cam: {fileID: 0}
 --- !u!114 &4252147228266757087
 MonoBehaviour:
   m_ObjectHideFlags: 0

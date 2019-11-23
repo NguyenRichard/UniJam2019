@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PetitBonhommeController : MonoBehaviour
+public class ChevalierController : MonoBehaviour
 {
     [SerializeField]
     AudioClip laMort;
@@ -11,13 +11,15 @@ public class PetitBonhommeController : MonoBehaviour
     AudioClip apparition;
     [SerializeField]
     AudioClip disparition;
+    [SerializeField]
+    AudioClip kickTheBall;
 
     [SerializeField]
     private AudioSource audioSource;
     [SerializeField]
-    private float normalSpeed = 0.7f;
+    private float normalSpeed = 1.5f;
     [SerializeField]
-    private float heavySpeed = 0.33f;
+    private float heavySpeed = 0.5f;
 
     [SerializeField]
     protected NavMeshAgent agent;
@@ -44,15 +46,6 @@ public class PetitBonhommeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       /* if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                agent.SetDestination(hit.point);
-            }
-        }*/
 
         if (Vector3.Distance(currentDestination, gameObject.transform.position) < 1 && !hasPicked)
         {
@@ -83,18 +76,22 @@ public class PetitBonhommeController : MonoBehaviour
             audioSource.clip = laMort;
             audioSource.Play();
             isDead = true;
-            Destroy(gameObject, 30);
         }
-       
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Ball"))
+        if (other.gameObject.CompareTag("Ball"))
         {
             Die();
         }
     }
 
-}
+    private void KickTheFoockingBall()
+    {
+        audioSource.clip = kickTheBall;
+        audioSource.Play();
+    }
 
+}
