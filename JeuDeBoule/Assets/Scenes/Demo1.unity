@@ -522,6 +522,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 41b70ca5ec72d0940831716a8a5ebfa8, type: 2}
+    - target: {fileID: 8004164930986162242, guid: 1136e45ab9179bf418da8df3880314ed,
+        type: 3}
+      propertyPath: max_speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8004164930986162242, guid: 1136e45ab9179bf418da8df3880314ed,
+        type: 3}
+      propertyPath: dash_speed
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1136e45ab9179bf418da8df3880314ed, type: 3}
 --- !u!1001 &54091062
