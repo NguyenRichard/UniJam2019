@@ -6,10 +6,22 @@ using UnityEngine.AI;
 public class PetitBonhommeController : MonoBehaviour
 {
     [SerializeField]
-    private Camera cam;
+    protected Camera cam;
+    public Camera Cam
+    {
+        set { cam = value; }
+    }
     [SerializeField]
-    private NavMeshAgent agent;
+    protected NavMeshAgent agent;
 
+    private Vector3 currentDestination;
+
+    private void Start()
+    {
+        GameManager gameManager = GameManager.Instance;
+        currentDestination = gameManager.GetCoffre(gameObject.transform.position);
+        agent.SetDestination(currentDestination);
+    }
 
     // Update is called once per frame
     void Update()
@@ -23,6 +35,14 @@ public class PetitBonhommeController : MonoBehaviour
                 agent.SetDestination(hit.point);
             }
         }
+
+        if (Vector3.Distance(currentDestination, gameObject.transform.position) < 0.5)
+        {
+            //agent.SetDestination(GameManager.so)
+        }
+
+
     }
+
 }
 
