@@ -27,16 +27,13 @@ public class PetitBonhommeFactory : MonoBehaviour
 
     [SerializeField]
     private GameObject petitBonhommePrefabs;
-    [SerializeField]
-    private Transform depart;
-    [SerializeField]
-    private Transform sortie;
+
     [SerializeField]
     Camera cam;
 
-    public void CreatePetitBonhomme()
+    public void CreatePetitBonhomme(Transform entree, Transform sortie)
     {
-        GameObject petitBonhomme = Instantiate(petitBonhommePrefabs,depart) as GameObject;
+        GameObject petitBonhomme = Instantiate(petitBonhommePrefabs,entree) as GameObject;
         petitBonhomme.GetComponent<PetitBonhommeController>().Cam = cam;
         petitBonhomme.GetComponent<PetitBonhommeController>().Sortie = sortie.position;
 

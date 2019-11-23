@@ -14,12 +14,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    private List<Transform> listEntrees = new List<Transform>();
+    private List<Transform> listSorties = new List<Transform>();
     private List<Transform> listCoffres = new List<Transform>();
-    public List<Transform> ListCoffres
-    {
-        get { return listCoffres; }
-    }
 
     public Vector3 GetCoffre(Vector3 position)
     {
@@ -49,6 +46,14 @@ public class GameManager : MonoBehaviour
         {
             listCoffres.Add(coffre.transform);
         }
+        foreach (var entree in GameObject.FindGameObjectsWithTag("Entree"))
+        {
+            listEntrees.Add(entree.transform);
+        }
+        foreach (var sortie in GameObject.FindGameObjectsWithTag("Sortie"))
+        {
+            listSorties.Add(sortie.transform);
+        }
 
         StartCoroutine(SpawnCoroutine());
     }
@@ -60,7 +65,9 @@ public class GameManager : MonoBehaviour
 
         while (true)
         {
-            PetitBonhommeFactory.Instance.CreatePetitBonhomme();
+            int i = Random.Range(0, listEntrees.Count);
+            int j = Random.Range(0, listSorties.Count);
+            PetitBonhommeFactory.Instance.CreatePetitBonhomme(listEntrees[i], listSorties[j]);
 
             yield return new WaitForSeconds(5);
         }
