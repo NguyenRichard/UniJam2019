@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 6964601598899007876}
   - component: {fileID: 5428961043387440701}
   m_Layer: 0
-  m_Name: Pilleur@Walking
+  m_Name: Prefab_Pilleur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -449,7 +449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbaa3b819b3409e40b9ea09732e86821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdingTransform: {fileID: 0}
+  holdingTransform: {fileID: 5428961044680007911}
 --- !u!1 &4127128012400268212
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,9 +5,10 @@ using UnityEngine.AI;
 
 public class PetitBonhommeController : MonoBehaviour
 {
-
-    public Camera cam;
-    public NavMeshAgent agent;
+    [SerializeField]
+    private Camera cam;
+    [SerializeField]
+    private NavMeshAgent agent;
 
 
     // Update is called once per frame
