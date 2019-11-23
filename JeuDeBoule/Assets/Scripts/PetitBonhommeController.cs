@@ -37,6 +37,8 @@ public class PetitBonhommeController : MonoBehaviour
         set { sortie = value; }
     }
 
+    private bool isDead = false;
+
     private void Start()
     {
         GameManager gameManager = GameManager.Instance;
@@ -79,11 +81,16 @@ public class PetitBonhommeController : MonoBehaviour
     }
     private void Die()
     {
-        pilleurAnimator.Die();
-        agent.speed = 0;
-        agent.enabled = false;
-        audioSource.clip = laMort;
-        audioSource.Play();
+        if (!isDead)
+        {
+            pilleurAnimator.Die();
+            agent.speed = 0;
+            agent.enabled = false;
+            audioSource.clip = laMort;
+            audioSource.Play();
+            isDead = true;
+        }
+       
     }
 
     private void OnTriggerEnter(Collider other)

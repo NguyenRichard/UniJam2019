@@ -32,7 +32,7 @@ public class InputController2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+     /*   if (Input.GetButtonDown("Jump"))
         {
             renderer.material.color = Color.green;
         }
@@ -49,7 +49,7 @@ public class InputController2 : MonoBehaviour
         {
             renderer.material.color = Color.white;
         }
-
+        */
         UpdateDungeonPose();
 
         Dash();
