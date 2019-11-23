@@ -6,6 +6,11 @@ using UnityEngine.AI;
 public class PetitBonhommeController : MonoBehaviour
 {
     [SerializeField]
+    private float normalSpeed = 0.7f;
+    [SerializeField]
+    private float heavySpeed = 0.33f;
+
+    [SerializeField]
     protected Camera cam;
     public Camera Cam
     {
@@ -28,6 +33,7 @@ public class PetitBonhommeController : MonoBehaviour
         GameManager gameManager = GameManager.Instance;
         currentDestination = gameManager.GetCoffre(gameObject.transform.position);
         agent.SetDestination(currentDestination);
+        agent.speed = normalSpeed;
     }
 
     // Update is called once per frame
@@ -51,7 +57,7 @@ public class PetitBonhommeController : MonoBehaviour
         if (Vector3.Distance(currentDestination, gameObject.transform.position) < 1 && !hasPicked)
         {
             agent.SetDestination(sortie);
-            agent.speed = agent.speed/3;
+            agent.speed = agent.speed * heavySpeed;
             pilleurAnimator.PickObject();
             hasPicked = true;
         }

@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19bd2333ad4b2b645bc2442253248b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalSpeed: 2.5
+  heavySpeed: 1
   cam: {fileID: 0}
   agent: {fileID: 7810861835260945576}
   pilleurAnimator: {fileID: 5763785542570481304}
