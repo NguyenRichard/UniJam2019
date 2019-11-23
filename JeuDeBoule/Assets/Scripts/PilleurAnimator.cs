@@ -9,6 +9,9 @@ public class PilleurAnimator : MonoBehaviour
     [SerializeField]
     Transform holdingTransform;
 
+    [SerializeField]
+    GameObject particle;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -26,10 +29,12 @@ public class PilleurAnimator : MonoBehaviour
     public void Die()
     {
         animator.SetBool("isDead", true);
+        particle.SetActive(true);
     }
 
     public void PickObject(GameObject obj)
     {
         obj.transform.parent = holdingTransform;
+        animator.SetBool("isWalking", false);
     }
 }
