@@ -70,7 +70,7 @@ public class ChevalierController : MonoBehaviour
     {
         if (!isDead)
         {
-            //pilleurAnimator.Die();
+            chevalierAnimator.Die();
             agent.speed = 0;
             agent.enabled = false;
             audioSource.clip = laMort;

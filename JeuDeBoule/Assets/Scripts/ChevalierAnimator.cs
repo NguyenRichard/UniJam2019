@@ -12,6 +12,11 @@ public class ChevalierAnimator : MonoBehaviour
         StartCoroutine(KickCoroutine());
     }
 
+    public void Die()
+    {
+        animator.SetBool("isDead", true);
+    }
+
     IEnumerator KickCoroutine()
     {
         animator.SetBool("isKicking", true);
