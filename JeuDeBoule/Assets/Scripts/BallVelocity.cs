@@ -14,8 +14,6 @@ public class BallVelocity : MonoBehaviour
     private bool isDashing = false;
     private Vector3 dash_direction;
 
-    private bool grounded = false;
-
     [SerializeField]
     private int maxDashBar = 100;
     [SerializeField]
@@ -25,10 +23,11 @@ public class BallVelocity : MonoBehaviour
     [SerializeField]
     private float dashRegenTimeRate = 1;
     private float nextRegen;
-
     private int dashBar;
-
     private float dashEnergyBar;
+
+    [SerializeField]
+    private float defeatMultiplier = 0.8f;
 
     private Vector3 direction;
     public Vector3 Direction
@@ -94,10 +93,18 @@ public class BallVelocity : MonoBehaviour
         }
     }
 
-
+    
     private void OnCollisionEnter(Collision collision)
     {
-        grounded = true;
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            if(Mathf.Sqrt(speedX*speedX+speedZ*speedZ) >= max_speed * defeatMultiplier)
+            {
+                speedX = 0;
+                speedZ = 0;
+                GameManager.Instance.Defeat();
+            }
+        }
     }
 
     public void SetSpeed(float x, float z)
@@ -110,4 +117,5 @@ public class BallVelocity : MonoBehaviour
         speedZ = Mathf.Lerp(speedZ, z * max_speed, Time.deltaTime);
 
     }
+
 }

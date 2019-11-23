@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -73,5 +74,10 @@ public class GameManager : MonoBehaviour
             //Delai de 5s entre chaque spawn de bonhomme
             yield return new WaitForSeconds(5);
         }
+    }
+
+    public void Defeat()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 }

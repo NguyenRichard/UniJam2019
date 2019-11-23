@@ -10,12 +10,11 @@ public class InputController2 : MonoBehaviour
     [SerializeField]
     private Transform dungeon;
 
-    [SerializeField]
     private GameObject ball;
 
     private BallVelocity ballVelocity;
 
-    private Renderer renderer;
+   // private Renderer renderer;
 
     private float max_degree = 10;
     private float currentXdegree = 0;
@@ -26,7 +25,9 @@ public class InputController2 : MonoBehaviour
 
     private void Start()
     {
-       // renderer = testJoystick.GetComponent<Renderer>();
+        ball = GameObject.FindGameObjectWithTag("Ball");
+        Debug.Assert(ballVelocity, "You must add the ball in the scene");
+        // renderer = testJoystick.GetComponent<Renderer>();
         ballVelocity = ball.GetComponent<BallVelocity>();
         Debug.Assert(ballVelocity, "You must add BallVelocity component to the ball");
     }
