@@ -62,15 +62,24 @@ public class PetitBonhommeController : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Die();
+        }
 
+    }
+    private void Die()
+    {
+        pilleurAnimator.Die();
+        agent.speed = 0;
+        agent.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Ball"))
         {
-            pilleurAnimator.Die();
-            agent.speed = 0;
+            Die();
         }
     }
 
