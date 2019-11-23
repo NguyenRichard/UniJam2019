@@ -9,7 +9,13 @@ public class ChevalierAnimator : MonoBehaviour
 
     public void Kick()
     {
+        StartCoroutine(KickCoroutine());
+    }
+
+    IEnumerator KickCoroutine()
+    {
         animator.SetBool("isKicking", true);
+        yield return new WaitForSeconds(.2f);
         animator.SetBool("isKicking", false);
     }
 }
