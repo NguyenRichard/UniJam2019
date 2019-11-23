@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -553,6 +553,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.730904
       objectReference: {fileID: 0}
+    - target: {fileID: 1854890148886010529, guid: 809d9229dab0add41bb3a84f32244f1c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3451654090942982322, guid: 809d9229dab0add41bb3a84f32244f1c,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -597,11 +602,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 284.1496
-      objectReference: {fileID: 0}
-    - target: {fileID: 1854890148886010529, guid: 809d9229dab0add41bb3a84f32244f1c,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 809d9229dab0add41bb3a84f32244f1c, type: 3}
@@ -1333,7 +1333,7 @@ PrefabInstance:
     - target: {fileID: 6204053028533748397, guid: 809d9229dab0add41bb3a84f32244f1c,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 3.1533306
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1854890148886010529, guid: 809d9229dab0add41bb3a84f32244f1c,
         type: 3}
