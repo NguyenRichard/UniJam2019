@@ -39,12 +39,7 @@ public class PetitBonhommeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            pilleurAnimator.Die();
-            agent.speed = 0;
-        }
-        if (Input.GetMouseButtonDown(0))
+       /* if (Input.GetMouseButtonDown(0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -52,7 +47,7 @@ public class PetitBonhommeController : MonoBehaviour
             {
                 agent.SetDestination(hit.point);
             }
-        }
+        }*/
 
         if (Vector3.Distance(currentDestination, gameObject.transform.position) < 1 && !hasPicked)
         {
@@ -68,6 +63,15 @@ public class PetitBonhommeController : MonoBehaviour
         }
 
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Ball"))
+        {
+            pilleurAnimator.Die();
+            agent.speed = 0;
+        }
     }
 
 }

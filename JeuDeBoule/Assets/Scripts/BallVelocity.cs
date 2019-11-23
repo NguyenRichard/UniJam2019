@@ -16,6 +16,27 @@ public class BallVelocity : MonoBehaviour
 
     private bool grounded = false;
 
+    [SerializeField]
+    private int maxDashBar = 100;
+    [SerializeField]
+    private int regenDashBar = 20;
+    [SerializeField]
+    private int dashCost = 25;
+    [SerializeField]
+    private float dashRegenTimeRate = 1;
+    private float nextRegen;
+
+    private int dashBar;
+
+    private float dashEnergyBar;
+
+    private Vector3 direction;
+    public Vector3 Direction
+    {
+        get { return direction; }
+        set { direction = value; }
+    }
+
     Rigidbody rb;
 
     float speedX;
@@ -27,49 +48,82 @@ public class BallVelocity : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dashBar = maxDashBar;
         rb = GetComponent<Rigidbody>();
+        nextRegen = Time.time + dashRegenTimeRate;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (grounded)
-        {
-            if (!isDashing)
-            {
-                speedX = (Mathf.Abs(rb.velocity.x) > max_speed) ? max_speed * Mathf.Sign(rb.velocity.x) : rb.velocity.x;
-                speedZ = (Mathf.Abs(rb.velocity.z) > max_speed) ? max_speed * Mathf.Sign(rb.velocity.z) : rb.velocity.z;
-
-                rb.velocity = new Vector3(speedX, 0, speedZ);
-            }
-            else
-            {
-                rb.velocity = dash_direction * dash_speed;
-            }
-        }
-
-
+        rb.velocity = new Vector3(speedX, 0, speedZ);
+        regenerateDashBar();
     }
 
     public void StartDash(float x, float z)
     {
-        if (!isDashing)
+        if (!isDashing && dashBar >= dashCost)
         {
             isDashing = true;
             dash_direction = new Vector3(x, 0, z).normalized;
+            speedX = dash_direction.x*dash_speed;
+            speedZ = dash_direction.z*dash_speed;
             StartCoroutine("Dash");
+            dashBar -= dashCost;
         }
     }
 
     IEnumerator Dash()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.5f);
         isDashing = false;
+        speedX = 0;
+        speedZ = 0;
+    }
+
+    private void regenerateDashBar()
+    {
+        if(Time.time > nextRegen)
+        {
+            dashBar += 20;
+            if(dashBar > maxDashBar)
+            {
+                dashBar = maxDashBar;
+            }
+            nextRegen = Time.time + dashRegenTimeRate;
+        }
     }
 
 
     private void OnCollisionEnter(Collision collision)
     {
         grounded = true;
+    }
+
+    public void SetSpeed(float x, float z)
+    {
+        if (isDashing)
+        {
+            return;
+        }
+        if (Mathf.Abs(speedX) < Mathf.Abs(max_speed * x))
+        {
+            speedX = Mathf.Lerp(speedX, x * max_speed, Time.deltaTime*30);
+        }
+        else
+        {
+            speedX = Mathf.Lerp(speedX, x * max_speed, Time.deltaTime/8);
+        }
+
+        if (Mathf.Abs(speedZ) < Mathf.Abs(max_speed * z))
+        {
+
+            speedZ = Mathf.Lerp(speedZ, z * max_speed, Time.deltaTime*30);
+        }
+        else
+        {
+            speedZ = Mathf.Lerp(speedZ, z * max_speed, Time.deltaTime/8);
+
+        }
     }
 }

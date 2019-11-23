@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputController : MonoBehaviour
+public class InputController2 : MonoBehaviour
 {
     [SerializeField]
     private GameObject testJoystick;
@@ -17,11 +17,14 @@ public class InputController : MonoBehaviour
 
     private Renderer renderer;
 
-    private float max_degree = 10;
+    private float max_degree = 15;
+
+    private float inputX = 0;
+    private float inputY = 0;
 
     private void Start()
     {
-        renderer = testJoystick.GetComponent<Renderer>();
+       // renderer = testJoystick.GetComponent<Renderer>();
         ballVelocity = ball.GetComponent<BallVelocity>();
         Debug.Assert(ballVelocity, "You must add BallVelocity component to the ball");
     }
@@ -31,7 +34,7 @@ public class InputController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-             renderer.material.color = Color.green;
+            renderer.material.color = Color.green;
         }
         if (Input.GetButtonUp("Jump"))
         {
@@ -56,10 +59,12 @@ public class InputController : MonoBehaviour
 
     void UpdateDungeonPose()
     {
-        float posX = Input.GetAxis("Horizontal");
-        float posY = Input.GetAxis("Vertical");
+        inputX = Input.GetAxis("Horizontal");
+        inputY = Input.GetAxis("Vertical");
 
-        dungeon.eulerAngles = new Vector3(convertToDegree(posY), 0, -convertToDegree(posX));
+        dungeon.eulerAngles = new Vector3(-convertToDegree(inputY), 0, convertToDegree(inputX));
+        ballVelocity.SetSpeed(inputX, inputY);
+      //  ballVelocity.Direction = new Vector3(inputX, 0, inputY);
         //testJoystick.transform.position = new Vector2(posX, posY);
 
     }
@@ -68,7 +73,7 @@ public class InputController : MonoBehaviour
     {
         float posX = Input.GetAxisRaw("DHorizontal");
         float posY = Input.GetAxisRaw("DVertical");
-        if(posX != 0 || posY != 0)
+        if (posX != 0 || posY != 0)
         {
             ballVelocity.StartDash(posX, posY);
         }
@@ -83,6 +88,5 @@ public class InputController : MonoBehaviour
     {
         return value * max_degree;
     }
-
 
 }
