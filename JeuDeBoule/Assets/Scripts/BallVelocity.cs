@@ -74,7 +74,7 @@ public class BallVelocity : MonoBehaviour
         if (!isDashing && dashBar >= dashCost)
         {
             isDashing = true;
-            dash_direction = new Vector3(x, 0, z).normalized*dash_speed;
+            speed_direction = new Vector3(x, 0, z).normalized*dash_speed;
             StartCoroutine("Dash");
             dashBar -= dashCost;
             trail.SetActive(true);

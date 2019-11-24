@@ -25,11 +25,6 @@ public class PetitBonhommeController : MonoBehaviour
     [SerializeField]
     private Collider collider;
 
-    public Camera Cam
-    {
-        set { cam = value; }
-    }
-
     [SerializeField]
     protected NavMeshAgent agent;
 
