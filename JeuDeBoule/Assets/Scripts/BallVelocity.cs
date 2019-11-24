@@ -20,7 +20,6 @@ public class BallVelocity : MonoBehaviour
 
     private Vector3 speed_direction;
     public Vector3 SpeedDirection { get { return speed_direction; } }
-    private Vector3 dash_direction;
 
     [SerializeField]
     private int maxDashBar = 100;
