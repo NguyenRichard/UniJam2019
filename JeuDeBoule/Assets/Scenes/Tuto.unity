@@ -11368,6 +11368,12 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4252147228266757085, guid: 6ed6c49c765966941b3c5ffbd060346c,
+        type: 3}
+      propertyPath: petitBonhommePrefabs
+      value: 
+      objectReference: {fileID: 6961601853142532488, guid: 5d11a5877c868b1418ddf839bdfe2f75,
+        type: 3}
     - target: {fileID: 4252147228266757087, guid: 6ed6c49c765966941b3c5ffbd060346c,
         type: 3}
       propertyPath: jaugeScore
