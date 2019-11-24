@@ -49,6 +49,8 @@ public class BallVelocity : MonoBehaviour
     [SerializeField]
     ParticleSystem deadParticles;
 
+    private bool firstMove = false;
+
     private Vector3 direction;
     public Vector3 Direction
     {
@@ -64,6 +66,7 @@ public class BallVelocity : MonoBehaviour
         dashBar = maxDashBar;
         rb = GetComponent<Rigidbody>();
         nextRegen = Time.time + dashRegenTimeRate;
+        deadParticles.Stop();
     }
 
     // Update is called once per frame
@@ -71,11 +74,19 @@ public class BallVelocity : MonoBehaviour
     {
         rb.velocity = new Vector3(speed_direction.x, 0, speed_direction.z);
         regenerateDashBar();
+        if(speed_direction.magnitude < 0.1 && firstMove)
+        {
+            Defeat();
+        }
+        if(!firstMove && speed_direction.magnitude != 0)
+        {
+            firstMove = true;
+        }
     }
 
     public void StartDash(float x, float z)
     {
-        if (!isDashing && dashBar >= dashCost)
+        if (!isDashing && dashBar >= dashCost && !isStun)
         {
             isDashing = true;
             speed_direction = new Vector3(x, 0, z).normalized*dash_speed;
@@ -113,18 +124,26 @@ public class BallVelocity : MonoBehaviour
         {
             if(speed_direction.magnitude >= max_speed * defeatMultiplier)
             {
-                speed_direction = Vector3.zero;
-                deadParticles.Play();
-                GameManager.Instance.Defeat();
+                Defeat();
             }
         }
 
     }
 
+    private void Defeat()
+    {
+        if (!isStun)
+        {
+            isStun = true;
+            speed_direction = Vector3.zero;
+            deadParticles.Play();
+            GameManager.Instance.Defeat();
+        }
+    }
 
     public void SetSpeed(float x, float z)
     {
-        if (isDashing)
+        if (isDashing || isStun)
         {
             return;
         }

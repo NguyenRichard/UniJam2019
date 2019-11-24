@@ -49,7 +49,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 41b70ca5ec72d0940831716a8a5ebfa8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 8625855221184412486}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,7 +167,7 @@ Transform:
   m_GameObject: {fileID: 8004164930986162243}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.88, y: 0.04, z: -4.72}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 3826607196545413683}
   - {fileID: 9423597012217975}
@@ -199,7 +199,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf59284b3c6023247beb6bb1e2325b7f, type: 2}
+  - {fileID: 2100000, guid: 41b70ca5ec72d0940831716a8a5ebfa8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -245,8 +245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4b2cb007f91da4cb988692a4ce26dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_speed: 2
-  dash_speed: 4
+  max_speed: 7
+  dash_speed: 7
   maxDashBar: 100
   regenDashBar: 20
   dashCost: 25
@@ -292,14 +292,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8004164930986162270}
     m_Modifications:
-    - target: {fileID: 1288364756607074995, guid: 156147a2a2f64564f811acb79f41a6f1,
+    - target: {fileID: 1288364756607074993, guid: 156147a2a2f64564f811acb79f41a6f1,
         type: 3}
-      propertyPath: m_Name
-      value: Smoke
+      propertyPath: looping
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1288364756607074995, guid: 156147a2a2f64564f811acb79f41a6f1,
+    - target: {fileID: 1288364756607074993, guid: 156147a2a2f64564f811acb79f41a6f1,
         type: 3}
-      propertyPath: m_IsActive
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1288364756607074992, guid: 156147a2a2f64564f811acb79f41a6f1,
@@ -356,6 +356,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288364756607074995, guid: 156147a2a2f64564f811acb79f41a6f1,
+        type: 3}
+      propertyPath: m_Name
+      value: Smoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288364756607074995, guid: 156147a2a2f64564f811acb79f41a6f1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 156147a2a2f64564f811acb79f41a6f1, type: 3}

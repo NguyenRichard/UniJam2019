@@ -23,7 +23,7 @@ public class InputController2 : MonoBehaviour
     private float inputX = 0;
     private float inputY = 0;
 
-    private void Start()
+    public void InitBall()
     {
         ball = GameObject.FindGameObjectWithTag("Ball");
         Debug.Assert(ballVelocity is null, "You must add the ball in the scene");
@@ -68,7 +68,10 @@ public class InputController2 : MonoBehaviour
         currentXdegree = Mathf.Lerp(currentXdegree, -convertToDegree(inputY), Time.deltaTime);
         currentZdegree = Mathf.Lerp(currentZdegree, convertToDegree(inputX),Time.deltaTime);
         dungeon.eulerAngles = new Vector3(currentXdegree, 0, currentZdegree);
-        ballVelocity.SetSpeed(inputX, inputY);
+        if(!(ballVelocity is null))
+        {
+            ballVelocity.SetSpeed(inputX, inputY);
+        }
       //  ballVelocity.Direction = new Vector3(inputX, 0, inputY);
         //testJoystick.transform.position = new Vector2(posX, posY);
 
