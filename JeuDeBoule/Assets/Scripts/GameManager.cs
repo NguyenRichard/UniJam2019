@@ -18,6 +18,17 @@ public class GameManager : MonoBehaviour
     JaugeController jaugeScoreController;
     JaugeController jaugeDashController;
 
+    [SerializeField]
+    private float timeFirstSpawnPetitBonhomme;
+    [SerializeField]
+    private float timeFirstSpawnChevalier;
+    [SerializeField]
+    private float delaySpawnPetitBonhomme;
+    [SerializeField]
+    private float delaySpawnChevalier;
+    [SerializeField]
+    private float timeLumiereDerriereLaPorte = 2;
+
     public static GameManager Instance
     {
         get
@@ -90,7 +101,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SpawnPetitBonhommeCoroutine()
     {
-        yield return new WaitForSeconds(2); //Init time
+        yield return new WaitForSeconds(timeFirstSpawnPetitBonhomme- timeLumiereDerriereLaPorte); //Init time
 
         while (true)
         {
@@ -99,19 +110,19 @@ public class GameManager : MonoBehaviour
             int j = Random.Range(0, listSorties.Count);
             //swith on the light
             listEntrees2[i].GetComponent<EntreeManager>().petitBonhommeLightOn();
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(timeLumiereDerriereLaPorte);
             
             PetitBonhommeFactory.Instance.CreatePetitBonhomme(listEntrees2[i].transform, listSorties[j]);
             //Delai de 5s entre chaque spawn de bonhomme
             listEntrees2[i].GetComponent<EntreeManager>().switchOffLight();
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(delaySpawnPetitBonhomme- timeLumiereDerriereLaPorte);
         }
     }
 
 
     IEnumerator SpawnChevalierCoroutine()
     {
-        yield return new WaitForSeconds(4); //Init time
+        yield return new WaitForSeconds(timeFirstSpawnChevalier- timeLumiereDerriereLaPorte); //Init time
 
         while (true)
         {
@@ -119,11 +130,11 @@ public class GameManager : MonoBehaviour
             int i = Random.Range(0, listEntrees2.Count);
             int j = Random.Range(0, listSorties.Count);
             listEntrees2[i].GetComponent<EntreeManager>().chevalierLightOn();
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(timeLumiereDerriereLaPorte);
             PetitBonhommeFactory.Instance.CreateChevalier(listEntrees2[i].transform, listSorties[j]);
             //Delai de 5s entre chaque spawn de bonhomme
             listEntrees2[i].GetComponent<EntreeManager>().switchOffLight();
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(delaySpawnChevalier - timeLumiereDerriereLaPorte);
         }
     }
 
