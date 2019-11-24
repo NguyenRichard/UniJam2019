@@ -13,16 +13,28 @@ public class JaugeController : MonoBehaviour
     [SerializeField]
     GameObject imgColor;
 
+    [SerializeField]
+    bool isDash = false;
+
+    [SerializeField]
+    Sprite scoreYellow;
+
+    [SerializeField]
+    Sprite scoreRed;
+
+    [SerializeField]
+    bool isGodMode = false;
+
     Image rColor;
 
-    GameManager gameManager;
-
-    public void Awake()
-    {
-        gameManager = GameManager.Instance;
+    public void Awake() { 
         rColor = imgColor.GetComponent<Image>();
         // Not "point" because we will update the display
-        Point = maxPoints / 2;
+
+        if (!isDash)
+        {
+            Point = maxPoints / 2;
+        }
     }
 
     public float Point
@@ -49,27 +61,26 @@ public class JaugeController : MonoBehaviour
         if (point <= 0)
         {
             point = 0;
-            gameManager.Defeat();
+
+            if (!isGodMode || !isDash)
+            {
+                GameManager.Instance.Defeat();
+            }
             // End the game
         }
 
-        //Vector3 tempPos   = gameObject.GetComponent<RectTransform>().localPosition;
-        //Vector2 tempScale = gameObject.GetComponent<RectTransform>().sizeDelta;
-
-        //tempPos.y = -70f + (point / maxPoints) * (70f-0f);
-        //tempScale.y = 0f + (point / maxPoints) * 128f;
-        //gameObject.GetComponent<RectTransform>().localPosition = tempPos;
-        //gameObject.GetComponent<RectTransform>().sizeDelta = tempScale;
-
         rColor.fillAmount = (point / maxPoints);
 
-        if (point >= maxPoints / 2)
+        if (!isDash)
         {
-            rColor.color = new Color(255, 255, 0);
-        }
-        else
-        {
-            rColor.color = new Color(255, 0, 0);
+            if ((point / maxPoints) >= 0.5)
+            {
+                rColor.sprite = scoreYellow;
+            }
+            else
+            {
+                rColor.sprite = scoreRed;
+            }
         }
     }
 }

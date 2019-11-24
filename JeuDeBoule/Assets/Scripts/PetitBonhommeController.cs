@@ -43,11 +43,9 @@ public class PetitBonhommeController : MonoBehaviour
 
     private bool isDead = false;
 
-    GameManager gameManager;
-
     private void Start()
     {
-        gameManager = GameManager.Instance;
+        GameManager gameManager = GameManager.Instance;
         currentDestination = gameManager.GetCoffre(gameObject.transform.position);
         agent.SetDestination(currentDestination);
         agent.speed = normalSpeed;
@@ -76,7 +74,7 @@ public class PetitBonhommeController : MonoBehaviour
 
         if (Vector3.Distance(sortie, gameObject.transform.position) < 1)
         {
-            gameManager.UpdateJaugeScore(-10);
+            GameManager.Instance.UpdateJaugeScore(-10);
             Destroy(gameObject);
         }
 
@@ -86,6 +84,31 @@ public class PetitBonhommeController : MonoBehaviour
         }
 
     }
+    private void DeathSound()
+    {
+        int i = Random.Range(0, 4);
+        switch (i)
+        {
+            case 0:
+                audioSource.clip = laMort;
+                break;
+            case 1:
+                audioSource.clip = laMort2;
+                break;
+            case 2:
+                audioSource.clip = laMort3;
+                break;
+            case 3:
+                audioSource.clip = laMort4;
+                break;
+
+            default:
+                audioSource.clip = laMort;
+                break;
+        }
+        audioSource.Play();
+    }
+
     private void Die()
     {
         if (!isDead)
@@ -93,10 +116,9 @@ public class PetitBonhommeController : MonoBehaviour
             pilleurAnimator.Die();
             agent.speed = 0;
             agent.enabled = false;
-            audioSource.clip = laMort;
-            audioSource.Play();
+            DeathSound();
             isDead = true;
-            gameManager.UpdateJaugeScore(5);
+            GameManager.Instance.UpdateJaugeScore(5);
             Destroy(gameObject, 30);
             collider.enabled = false;
         }

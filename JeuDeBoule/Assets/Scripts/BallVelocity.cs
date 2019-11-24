@@ -93,6 +93,8 @@ public class BallVelocity : MonoBehaviour
             StartCoroutine("Dash");
             dashBar -= dashCost;
             trail.SetActive(true);
+
+            GameManager.Instance.UpdateJaugeDash(dashBar);
         }
     }
 
@@ -114,6 +116,8 @@ public class BallVelocity : MonoBehaviour
                 dashBar = maxDashBar;
             }
             nextRegen = Time.time + dashRegenTimeRate;
+
+            GameManager.Instance.UpdateJaugeDash(dashBar);
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartGUI : MonoBehaviour
 {
@@ -13,23 +14,15 @@ public class StartGUI : MonoBehaviour
     [SerializeField]
     GameObject gameMenu;
 
-    // Temp
-    [SerializeField]
-    GameObject jauge;
-
     bool isDisappear = false;
 
-    public void Awake()
-    {
-        introMenu.SetActive(true);
-        //gameMenu.SetActive(false);
-    }
 
     public void StartGame()
     {
-        isDisappear = true;
+        //isDisappear = true;
         //gameMenu.SetActive(true);
         //jauge.GetComponent<JaugeController>().Point = 10;
+        SceneManager.LoadScene("Demo1");
     }
 
     public void Update()
