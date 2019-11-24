@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject prefabSphere;
 
+    public bool isTuto = false;
+    private GameObject ball;
+
     public static GameManager Instance
     {
         get
@@ -105,7 +108,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        Instantiate(prefabSphere, spawnPose.transform.position, spawnPose.transform.rotation);
+        ball = Instantiate(prefabSphere, spawnPose.transform.position, spawnPose.transform.rotation);
         StartCoroutine(SpawnPetitBonhommeCoroutine());
         StartCoroutine(SpawnChevalierCoroutine());
         GameObject.Find("InputController").GetComponent<InputController2>().InitBall();
@@ -152,8 +155,7 @@ public class GameManager : MonoBehaviour
 
     public void Defeat()
     {
-
-        StartCoroutine("GameOver");
+         StartCoroutine("GameOver");
 
     }
     
@@ -161,6 +163,15 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delayGameOver);
 
-        SceneManager.LoadScene("GameOver");
+        if (isTuto)
+        {
+            Destroy(ball);
+            Invoke("StartGame", delayGameOver);
+        }
+        else
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+        
     }
 }

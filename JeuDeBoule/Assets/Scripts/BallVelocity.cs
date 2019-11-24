@@ -63,6 +63,11 @@ public class BallVelocity : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+
+    private void OnEnable()
+    {
         dashBar = maxDashBar;
         rb = GetComponent<Rigidbody>();
         nextRegen = Time.time + dashRegenTimeRate;

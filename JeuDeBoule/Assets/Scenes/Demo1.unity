@@ -96,7 +96,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 87c1afbc97a4e8d49b4dca029bef2f6a,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -3277,21 +3278,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Origin
       objectReference: {fileID: 0}
-    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
-        type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
-        type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
-        type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 703377103506551438, guid: cc23f238492fbe840985300202280c92,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3376,6 +3362,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc23f238492fbe840985300202280c92, type: 3}

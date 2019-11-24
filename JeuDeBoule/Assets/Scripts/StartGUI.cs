@@ -16,13 +16,16 @@ public class StartGUI : MonoBehaviour
 
     bool isDisappear = false;
 
+    [SerializeField]
+    string levelName;
+
 
     public void StartGame()
     {
         //isDisappear = true;
         //gameMenu.SetActive(true);
         //jauge.GetComponent<JaugeController>().Point = 10;
-        SceneManager.LoadScene("Tuto");
+        SceneManager.LoadScene(levelName);
     }
 
     public void Update()

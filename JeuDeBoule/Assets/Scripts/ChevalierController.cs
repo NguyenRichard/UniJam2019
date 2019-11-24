@@ -132,13 +132,13 @@ public class ChevalierController : MonoBehaviour
             BallVelocity ballVelocity = other.gameObject.GetComponent<BallVelocity>();
             if (ballVelocity.IsDashing)
             {
-                ballVelocity.Rebound(0.5f);
+                ballVelocity.Rebound(1f);
                 Die();
             }
             else
             {
                 KickTheFoockingBall();
-                ballVelocity.Rebound(2);
+                ballVelocity.Rebound(1.5f);
             }
         }
     }
