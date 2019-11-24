@@ -30,6 +30,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float timeLumiereDerriereLaPorte = 2;
 
+    [SerializeField]
+    private GameObject spawnPose;
+    [SerializeField]
+    private GameObject prefabSphere;
+
     public static GameManager Instance
     {
         get
@@ -95,10 +100,16 @@ public class GameManager : MonoBehaviour
         jaugeScoreController = jaugeScore.GetComponent<JaugeController>();
         jaugeDashController  = jaugeDash.GetComponent<JaugeController>();
 
-        StartCoroutine(SpawnPetitBonhommeCoroutine());
-        StartCoroutine(SpawnChevalierCoroutine());
+        StartGame();
     }
 
+    public void StartGame()
+    {
+        Instantiate(prefabSphere, spawnPose.transform.position, spawnPose.transform.rotation);
+        StartCoroutine(SpawnPetitBonhommeCoroutine());
+        StartCoroutine(SpawnChevalierCoroutine());
+        GameObject.Find("InputController").GetComponent<InputController2>().InitBall();
+    }
 
     IEnumerator SpawnPetitBonhommeCoroutine()
     {
