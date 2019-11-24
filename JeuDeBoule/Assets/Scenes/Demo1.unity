@@ -6641,6 +6641,7 @@ MonoBehaviour:
   speed: 5
   introMenu: {fileID: 0}
   gameMenu: {fileID: 0}
+  levelName: Demo1
 --- !u!225 &1055106791
 CanvasGroup:
   m_ObjectHideFlags: 0

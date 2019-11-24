@@ -11488,6 +11488,11 @@ PrefabInstance:
       propertyPath: spawnPose
       value: 
       objectReference: {fileID: 2089962568}
+    - target: {fileID: 4252147228266757087, guid: 6ed6c49c765966941b3c5ffbd060346c,
+        type: 3}
+      propertyPath: isTuto
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ed6c49c765966941b3c5ffbd060346c, type: 3}
 --- !u!1001 &5343234371292424317
