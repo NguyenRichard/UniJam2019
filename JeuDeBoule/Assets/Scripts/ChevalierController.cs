@@ -52,6 +52,12 @@ public class ChevalierController : MonoBehaviour
 
     }
 
+    public void soundOfTheFoot()
+    {
+        audioSource.clip = apparition;
+        audioSource.Play();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -60,7 +66,9 @@ public class ChevalierController : MonoBehaviour
         {
             agent.SetDestination(sortie);
             agent.speed = agent.speed * heavySpeed;
-          //  pilleurAnimator.PickObject();
+            //  pilleurAnimator.PickObject();
+            audioSource.clip = disparition;
+            audioSource.Play();
             hasPicked = true;
         }
 
