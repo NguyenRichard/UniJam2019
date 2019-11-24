@@ -198,21 +198,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Origin
       objectReference: {fileID: 0}
-    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
-        type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
-        type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
-        type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 703377103506551438, guid: cc23f238492fbe840985300202280c92,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -297,6 +282,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc23f238492fbe840985300202280c92, type: 3}
@@ -414,6 +414,7 @@ MonoBehaviour:
   speed: 5
   introMenu: {fileID: 1132612622}
   gameMenu: {fileID: 0}
+  levelName: Tuto
 --- !u!225 &1055106791
 CanvasGroup:
   m_ObjectHideFlags: 0
