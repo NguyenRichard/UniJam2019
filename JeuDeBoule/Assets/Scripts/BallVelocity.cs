@@ -49,6 +49,14 @@ public class BallVelocity : MonoBehaviour
     [SerializeField]
     ParticleSystem deadParticles;
 
+    [SerializeField]
+    private bool godMode = false;
+    public bool GodMode
+    {
+        get { return godMode; }
+        set { godMode = value; }
+    }
+
     private bool firstMove = false;
 
     private Vector3 direction;
@@ -138,10 +146,17 @@ public class BallVelocity : MonoBehaviour
     {
         if (!isStun)
         {
-            isStun = true;
-            speed_direction = Vector3.zero;
-            deadParticles.Play();
-            GameManager.Instance.Defeat();
+            if (!godMode)
+            {
+                deadParticles.Play();
+                isStun = true;
+                speed_direction = Vector3.zero;
+                GameManager.Instance.Defeat();
+            }
+            else if (speed_direction.magnitude > 0.1)
+            {
+                deadParticles.Play();
+            }
         }
     }
 

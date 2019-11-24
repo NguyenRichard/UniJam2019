@@ -35,24 +35,30 @@ public class InputController2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     /*   if (Input.GetButtonDown("Jump"))
-        {
-            renderer.material.color = Color.green;
-        }
-        if (Input.GetButtonUp("Jump"))
-        {
-            renderer.material.color = Color.white;
-        }
-        if (Input.GetButtonDown("Dash"))
-        {
-            renderer.material.color = Color.red;
+        /*   if (Input.GetButtonDown("Jump"))
+           {
+               renderer.material.color = Color.green;
+           }
+           if (Input.GetButtonUp("Jump"))
+           {
+               renderer.material.color = Color.white;
+           }
+           if (Input.GetButtonDown("Dash"))
+           {
+               renderer.material.color = Color.red;
 
-        }
-        if (Input.GetButtonUp("Dash"))
+           }
+           if (Input.GetButtonUp("Dash"))
+           {
+               renderer.material.color = Color.white;
+           }
+           */
+
+        if (Input.GetButtonDown("GodMode"))
         {
-            renderer.material.color = Color.white;
+            ballVelocity.GodMode = !ballVelocity.GodMode;
         }
-        */
+
         UpdateDungeonPose();
 
         Dash();
