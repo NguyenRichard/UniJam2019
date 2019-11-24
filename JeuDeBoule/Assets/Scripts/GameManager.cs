@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject jaugeScore;
 
+    [SerializeField]
+    private float delayGameOver = 1;
+
     JaugeController jaugeController;
 
     public static GameManager Instance
@@ -117,7 +120,15 @@ public class GameManager : MonoBehaviour
 
     public void Defeat()
     {
-        SceneManager.LoadScene("GameOver");
 
+        StartCoroutine("GameOver");
+
+    }
+    
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(delayGameOver);
+
+        SceneManager.LoadScene("GameOver");
     }
 }

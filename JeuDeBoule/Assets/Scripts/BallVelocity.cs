@@ -46,6 +46,9 @@ public class BallVelocity : MonoBehaviour
     [SerializeField]
     private GameObject trail;
 
+    [SerializeField]
+    ParticleSystem deadParticles;
+
     private Vector3 direction;
     public Vector3 Direction
     {
@@ -111,6 +114,7 @@ public class BallVelocity : MonoBehaviour
             if(speed_direction.magnitude >= max_speed * defeatMultiplier)
             {
                 speed_direction = Vector3.zero;
+                deadParticles.Play();
                 GameManager.Instance.Defeat();
             }
         }

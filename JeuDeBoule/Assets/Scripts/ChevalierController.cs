@@ -86,10 +86,8 @@ public class ChevalierController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("collide");
         if (other.gameObject.CompareTag("Ball"))
         {
-            Debug.Log("ball");
             BallVelocity ballVelocity = other.gameObject.GetComponent<BallVelocity>();
             if (ballVelocity.IsDashing)
             {
@@ -98,7 +96,6 @@ public class ChevalierController : MonoBehaviour
             }
             else
             {
-                Debug.Log("rebound");
                 KickTheFoockingBall();
                 ballVelocity.Rebound(2);
             }
