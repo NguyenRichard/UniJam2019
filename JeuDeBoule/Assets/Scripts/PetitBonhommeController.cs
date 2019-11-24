@@ -86,6 +86,31 @@ public class PetitBonhommeController : MonoBehaviour
         }
 
     }
+    private void DeathSound()
+    {
+        int i = Random.Range(0, 4);
+        switch (i)
+        {
+            case 0:
+                audioSource.clip = laMort;
+                break;
+            case 1:
+                audioSource.clip = laMort2;
+                break;
+            case 2:
+                audioSource.clip = laMort3;
+                break;
+            case 3:
+                audioSource.clip = laMort4;
+                break;
+
+            default:
+                audioSource.clip = laMort;
+                break;
+        }
+        audioSource.Play();
+    }
+
     private void Die()
     {
         if (!isDead)
@@ -93,8 +118,7 @@ public class PetitBonhommeController : MonoBehaviour
             pilleurAnimator.Die();
             agent.speed = 0;
             agent.enabled = false;
-            audioSource.clip = laMort;
-            audioSource.Play();
+            DeathSound();
             isDead = true;
             gameManager.UpdateJaugeScore(5);
             Destroy(gameObject, 30);
