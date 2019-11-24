@@ -7,6 +7,8 @@ public class EntreeManager : MonoBehaviour
     [SerializeField]
     Light spotlight;
 
+    int lightNumber = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,16 +17,23 @@ public class EntreeManager : MonoBehaviour
 
     public void petitBonhommeLightOn()
     {
+        lightNumber++;
         spotlight.color = Color.white;
         spotlight.enabled = true;
     }
     public void chevalierLightOn()
     {
+        lightNumber++;
         spotlight.color = Color.red;
         spotlight.enabled = true;
     }
     public void switchOffLight()
     {
-        spotlight.enabled = false;
+        lightNumber--;
+        if (lightNumber == 0)
+        {
+            spotlight.enabled = false;
+        }
+        
     }
 }
