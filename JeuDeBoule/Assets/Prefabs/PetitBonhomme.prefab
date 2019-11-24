@@ -51,7 +51,7 @@ MonoBehaviour:
   laMort2: {fileID: 8300000, guid: 0a9c7f30a1ffdeb44b654d841da25beb, type: 3}
   laMort3: {fileID: 8300000, guid: 52ce31ebd43bc11478e791e663c63abb, type: 3}
   laMort4: {fileID: 8300000, guid: aa900f0d23f796a4a93f9cf3bcbc0ea1, type: 3}
-  apparition: {fileID: 0}
+  apparition: {fileID: 8300000, guid: b5e0a63ba45ec3540b4f4619b32f5455, type: 3}
   disparition: {fileID: 0}
   audioSource: {fileID: 5921117482558478213}
   normalSpeed: 2.5

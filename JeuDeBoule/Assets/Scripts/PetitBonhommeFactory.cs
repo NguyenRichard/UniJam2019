@@ -34,13 +34,14 @@ public class PetitBonhommeFactory : MonoBehaviour
     {
         GameObject petitBonhomme = Instantiate(petitBonhommePrefabs,entree) as GameObject;
         petitBonhomme.GetComponent<PetitBonhommeController>().Sortie = sortie.position;
-
+        petitBonhomme.GetComponent<PetitBonhommeController>().soundOfTheFoot();
     }
 
     public void CreateChevalier(Transform entree, Transform sortie)
     {
         GameObject chevalier = Instantiate(chevalierPrefabs, entree) as GameObject;
         chevalier.GetComponent<ChevalierController>().Sortie = sortie.position;
+        chevalier.GetComponent<ChevalierController>().soundOfTheFoot();
     }
 
 

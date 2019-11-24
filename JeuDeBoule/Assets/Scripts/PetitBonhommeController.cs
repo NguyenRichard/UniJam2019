@@ -51,6 +51,12 @@ public class PetitBonhommeController : MonoBehaviour
         agent.speed = normalSpeed;
     }
 
+    public void soundOfTheFoot()
+    {
+        audioSource.clip = apparition;
+        audioSource.Play();
+    }
+
     // Update is called once per frame
     void Update()
     {
