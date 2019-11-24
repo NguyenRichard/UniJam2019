@@ -17,6 +17,7 @@ public class BallVelocity : MonoBehaviour
         get { return isDashing; }
     }
 
+    private Vector3 speed_direction;
     private Vector3 dash_direction;
 
     [SerializeField]
@@ -27,12 +28,22 @@ public class BallVelocity : MonoBehaviour
     private int dashCost = 25;
     [SerializeField]
     private float dashRegenTimeRate = 1;
+    [SerializeField]
+    private float dashDuration = 0.4f;
+
     private float nextRegen;
     private int dashBar;
     private float dashEnergyBar;
 
     [SerializeField]
     private float defeatMultiplier = 0.8f;
+
+    [SerializeField]
+    private float stunDuration = 0.3f;
+    private bool isStun = false;
+
+    [SerializeField]
+    private GameObject trail;
 
     private Vector3 direction;
     public Vector3 Direction
@@ -67,20 +78,22 @@ public class BallVelocity : MonoBehaviour
         if (!isDashing && dashBar >= dashCost)
         {
             isDashing = true;
-            dash_direction = new Vector3(x, 0, z).normalized;
-            speedX = dash_direction.x*dash_speed;
-            speedZ = dash_direction.z*dash_speed;
+            dash_direction = new Vector3(x, 0, z).normalized*dash_speed;
+            speedX = dash_direction.x;
+            speedZ = dash_direction.z;
             StartCoroutine("Dash");
             dashBar -= dashCost;
+            trail.SetActive(true);
         }
     }
 
     IEnumerator Dash()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         speedX = speedX/2;
         speedZ = speedZ/2;
+        trail.SetActive(false);
     }
 
     private void regenerateDashBar()
@@ -123,9 +136,21 @@ public class BallVelocity : MonoBehaviour
 
     }
 
-    public void Rebound()
+    public void Rebound(float multiplier)
     {
-        speedX = -speedX * 2;
-        speedZ = -speedZ * 2;
+        if (!isStun)
+        {
+            speedX = -speedX * multiplier;
+            speedZ = -speedZ * multiplier;
+            isStun = true;
+            StartCoroutine("Stun");
+        }
+
+    }
+
+    IEnumerator Stun()
+    {
+        yield return new WaitForSeconds(stunDuration);
+        isStun = false;
     }
 }

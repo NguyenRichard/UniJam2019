@@ -25,6 +25,8 @@ public class ChevalierController : MonoBehaviour
     protected NavMeshAgent agent;
     [SerializeField]
     private ChevalierAnimator chevalierAnimator;
+    [SerializeField]
+    private Collider collider;
     private Vector3 currentDestination;
     bool hasPicked = false;
     private Vector3 sortie;
@@ -41,6 +43,7 @@ public class ChevalierController : MonoBehaviour
         currentDestination = gameManager.GetCoffre(gameObject.transform.position);
         agent.SetDestination(currentDestination);
         agent.speed = normalSpeed;
+
     }
 
     // Update is called once per frame
@@ -76,6 +79,7 @@ public class ChevalierController : MonoBehaviour
             audioSource.clip = laMort;
             audioSource.Play();
             isDead = true;
+            collider.enabled = false;
         }
 
     }
@@ -89,13 +93,14 @@ public class ChevalierController : MonoBehaviour
             BallVelocity ballVelocity = other.gameObject.GetComponent<BallVelocity>();
             if (ballVelocity.IsDashing)
             {
+                ballVelocity.Rebound(0.5f);
                 Die();
             }
             else
             {
                 Debug.Log("rebound");
                 KickTheFoockingBall();
-                ballVelocity.Rebound();
+                ballVelocity.Rebound(2);
             }
         }
     }

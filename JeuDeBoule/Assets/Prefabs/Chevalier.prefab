@@ -56,6 +56,7 @@ MonoBehaviour:
   heavySpeed: 0.5
   agent: {fileID: 1311866906238568146}
   chevalierAnimator: {fileID: 84417944472556008}
+  collider: {fileID: 2254194773916243784}
 --- !u!82 &1311866906238568108
 AudioSource:
   m_ObjectHideFlags: 0
