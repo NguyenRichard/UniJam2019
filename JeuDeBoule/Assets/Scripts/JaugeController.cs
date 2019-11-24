@@ -11,13 +11,18 @@ public class JaugeController : MonoBehaviour
     int maxPoints = 100;
 
     [SerializeField]
-    GameObject rawColor;
+    GameObject imgColor;
 
-    RawImage rColor;
+    Image rColor;
+
+    GameManager gameManager;
 
     public void Awake()
     {
-        rColor = GameObject.Find("JaugeScore/Color").GetComponent<RawImage>();
+        gameManager = GameManager.Instance;
+        rColor = imgColor.GetComponent<Image>();
+        // Not "point" because we will update the display
+        Point = maxPoints / 2;
     }
 
     public float Point
@@ -25,7 +30,6 @@ public class JaugeController : MonoBehaviour
         set
         {
             point = value;
-            Debug.Log(point);
             ChangeDisplay();
         }
         get
@@ -41,17 +45,25 @@ public class JaugeController : MonoBehaviour
             point = maxPoints;
             // End the game
         }
-        Vector3 tempPos   = gameObject.GetComponent<RectTransform>().localPosition;
-        Vector2 tempScale = gameObject.GetComponent<RectTransform>().sizeDelta;
 
-        tempPos.y = -70f + (point / maxPoints) * (70f-0f);
-        tempScale.y = 0f + (point / maxPoints) * 128f;
-        gameObject.GetComponent<RectTransform>().localPosition = tempPos;
-        gameObject.GetComponent<RectTransform>().sizeDelta = tempScale;
+        if (point <= 0)
+        {
+            point = 0;
+            gameManager.Defeat();
+            // End the game
+        }
 
-        Debug.Log((point / maxPoints) * 255);
+        //Vector3 tempPos   = gameObject.GetComponent<RectTransform>().localPosition;
+        //Vector2 tempScale = gameObject.GetComponent<RectTransform>().sizeDelta;
 
-        if (point > maxPoints / 2)
+        //tempPos.y = -70f + (point / maxPoints) * (70f-0f);
+        //tempScale.y = 0f + (point / maxPoints) * 128f;
+        //gameObject.GetComponent<RectTransform>().localPosition = tempPos;
+        //gameObject.GetComponent<RectTransform>().sizeDelta = tempScale;
+
+        rColor.fillAmount = (point / maxPoints);
+
+        if (point >= maxPoints / 2)
         {
             rColor.color = new Color(255, 255, 0);
         }
