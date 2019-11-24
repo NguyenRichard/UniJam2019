@@ -19,8 +19,7 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-
-    private List<Transform> listEntrees = new List<Transform>();
+    private List<GameObject> listEntrees2 = new List<GameObject>();
     private List<Transform> listSorties = new List<Transform>();
     private List<Transform> listCoffres = new List<Transform>();
 
@@ -59,13 +58,14 @@ public class GameManager : MonoBehaviour
         {
             listCoffres.Add(coffre.transform);
         }
-        foreach (var entree in GameObject.FindGameObjectsWithTag("Entree"))
-        {
-            listEntrees.Add(entree.transform);
-        }
+
         foreach (var sortie in GameObject.FindGameObjectsWithTag("Sortie"))
         {
             listSorties.Add(sortie.transform);
+        }
+        foreach (var entree in GameObject.FindGameObjectsWithTag("Entree"))
+        {
+            listEntrees2.Add(entree);
         }
 
         // Retrieve jauge controller
@@ -83,9 +83,9 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             //On choisis une entree et une sortie aleatoirement
-            int i = Random.Range(0, listEntrees.Count);
+            int i = Random.Range(0, listEntrees2.Count);
             int j = Random.Range(0, listSorties.Count);
-            PetitBonhommeFactory.Instance.CreatePetitBonhomme(listEntrees[i], listSorties[j]);
+            PetitBonhommeFactory.Instance.CreatePetitBonhomme(listEntrees2[i].transform, listSorties[j]);
             //Delai de 5s entre chaque spawn de bonhomme
             yield return new WaitForSeconds(5);
         }
@@ -99,9 +99,9 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             //On choisis une entree et une sortie aleatoirement
-            int i = Random.Range(0, listEntrees.Count);
+            int i = Random.Range(0, listEntrees2.Count);
             int j = Random.Range(0, listSorties.Count);
-            PetitBonhommeFactory.Instance.CreateChevalier(listEntrees[i], listSorties[j]);
+            PetitBonhommeFactory.Instance.CreateChevalier(listEntrees2[i].transform, listSorties[j]);
             //Delai de 5s entre chaque spawn de bonhomme
             yield return new WaitForSeconds(10);
         }
