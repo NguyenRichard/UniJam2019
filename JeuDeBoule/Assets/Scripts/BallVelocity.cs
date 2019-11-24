@@ -7,6 +7,7 @@ public class BallVelocity : MonoBehaviour
 
     [SerializeField]
     private float max_speed = 1;
+    public float MaxSpeed { get { return max_speed;  } }
 
     [SerializeField]
     private float dash_speed = 4;
@@ -18,6 +19,7 @@ public class BallVelocity : MonoBehaviour
     }
 
     private Vector3 speed_direction;
+    public Vector3 SpeedDirection { get { return speed_direction; } }
     private Vector3 dash_direction;
 
     [SerializeField]
