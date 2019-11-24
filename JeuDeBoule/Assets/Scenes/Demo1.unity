@@ -2889,6 +2889,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Origin
       objectReference: {fileID: 0}
+    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 703377103506551438, guid: cc23f238492fbe840985300202280c92,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2973,21 +2988,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
-        type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
-        type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
-        type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc23f238492fbe840985300202280c92, type: 3}
@@ -6063,7 +6063,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -13086,13 +13086,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: bcce97ff8de38a848b080afa32a8ee94, type: 3}
     m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
