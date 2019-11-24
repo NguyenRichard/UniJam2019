@@ -165,8 +165,7 @@ public class GameManager : MonoBehaviour
 
         if (isTuto)
         {
-            Destroy(ball);
-            Invoke("StartGame", delayGameOver);
+            SceneManager.LoadScene("Tuto");
         }
         else
         {
