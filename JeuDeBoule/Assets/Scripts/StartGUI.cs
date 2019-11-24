@@ -29,7 +29,7 @@ public class StartGUI : MonoBehaviour
     {
         isDisappear = true;
         //gameMenu.SetActive(true);
-        jauge.GetComponent<JaugeController>().Point = 10;
+        //jauge.GetComponent<JaugeController>().Point = 10;
     }
 
     public void Update()
