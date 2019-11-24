@@ -48,6 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laMort: {fileID: 8300000, guid: a2dbda6890a041b499209857c26bde9e, type: 3}
+  laMort2: {fileID: 8300000, guid: 40af25dfcd208814ea60641a66e7b777, type: 3}
+  laMort3: {fileID: 0}
+  laMort4: {fileID: 0}
   apparition: {fileID: 0}
   disparition: {fileID: 0}
   kickTheBall: {fileID: 8300000, guid: 56d7326cd56f1bb4dafa98b25d0046ac, type: 3}

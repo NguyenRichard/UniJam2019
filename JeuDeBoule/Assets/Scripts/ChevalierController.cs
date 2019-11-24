@@ -8,6 +8,12 @@ public class ChevalierController : MonoBehaviour
     [SerializeField]
     AudioClip laMort;
     [SerializeField]
+    AudioClip laMort2;
+    [SerializeField]
+    AudioClip laMort3;
+    [SerializeField]
+    AudioClip laMort4;
+    [SerializeField]
     AudioClip apparition;
     [SerializeField]
     AudioClip disparition;

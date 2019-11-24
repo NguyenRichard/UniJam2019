@@ -48,6 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laMort: {fileID: 8300000, guid: 9659a34c98897d94aaa2f58ba09fff3b, type: 3}
+  laMort2: {fileID: 8300000, guid: 0a9c7f30a1ffdeb44b654d841da25beb, type: 3}
+  laMort3: {fileID: 8300000, guid: 52ce31ebd43bc11478e791e663c63abb, type: 3}
+  laMort4: {fileID: 8300000, guid: aa900f0d23f796a4a93f9cf3bcbc0ea1, type: 3}
   apparition: {fileID: 0}
   disparition: {fileID: 0}
   audioSource: {fileID: 5921117482558478213}

@@ -8,6 +8,12 @@ public class PetitBonhommeController : MonoBehaviour
     [SerializeField]
     AudioClip laMort;
     [SerializeField]
+    AudioClip laMort2;
+    [SerializeField]
+    AudioClip laMort3;
+    [SerializeField]
+    AudioClip laMort4;
+    [SerializeField]
     AudioClip apparition;
     [SerializeField]
     AudioClip disparition;
@@ -18,9 +24,6 @@ public class PetitBonhommeController : MonoBehaviour
     private float normalSpeed = 0.7f;
     [SerializeField]
     private float heavySpeed = 0.33f;
-
-    [SerializeField]
-    protected Camera cam;
 
     [SerializeField]
     private Collider collider;
