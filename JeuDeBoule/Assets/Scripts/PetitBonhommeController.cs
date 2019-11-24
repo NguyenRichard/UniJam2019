@@ -73,7 +73,7 @@ public class PetitBonhommeController : MonoBehaviour
 
         if (Vector3.Distance(sortie, gameObject.transform.position) < 1)
         {
-            gameManager.UpdateJauge(-10);
+            gameManager.UpdateJaugeScore(-10);
             Destroy(gameObject);
         }
 
@@ -93,7 +93,7 @@ public class PetitBonhommeController : MonoBehaviour
             audioSource.clip = laMort;
             audioSource.Play();
             isDead = true;
-            gameManager.UpdateJauge(5);
+            gameManager.UpdateJaugeScore(5);
             Destroy(gameObject, 30);
             collider.enabled = false;
         }
