@@ -54,6 +54,7 @@ MonoBehaviour:
   normalSpeed: 2.5
   heavySpeed: 1
   cam: {fileID: 0}
+  collider: {fileID: 0}
   agent: {fileID: 7810861835260945576}
   pilleurAnimator: {fileID: 5763785542570481304}
 --- !u!195 &7810861835260945576
