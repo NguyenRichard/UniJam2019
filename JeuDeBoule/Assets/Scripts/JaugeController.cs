@@ -62,9 +62,10 @@ public class JaugeController : MonoBehaviour
         {
             point = 0;
 
-            if (!isGodMode || !isDash)
+            if (!isDash)
             {
-                GameManager.Instance.Defeat();
+                if(!isGodMode)
+                    GameManager.Instance.Defeat();
             }
             // End the game
         }
