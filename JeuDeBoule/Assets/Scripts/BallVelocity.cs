@@ -54,10 +54,6 @@ public class BallVelocity : MonoBehaviour
 
     Rigidbody rb;
 
-    float speedX;
-    float speedY;
-    float speedZ;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -69,7 +65,7 @@ public class BallVelocity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector3(speedX, 0, speedZ);
+        rb.velocity = new Vector3(speed_direction.x, 0, speed_direction.z);
         regenerateDashBar();
     }
 
@@ -79,8 +75,6 @@ public class BallVelocity : MonoBehaviour
         {
             isDashing = true;
             dash_direction = new Vector3(x, 0, z).normalized*dash_speed;
-            speedX = dash_direction.x;
-            speedZ = dash_direction.z;
             StartCoroutine("Dash");
             dashBar -= dashCost;
             trail.SetActive(true);
@@ -91,8 +85,7 @@ public class BallVelocity : MonoBehaviour
     {
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
-        speedX = speedX/2;
-        speedZ = speedZ/2;
+        speed_direction = speed_direction / 2;
         trail.SetActive(false);
     }
 
@@ -114,10 +107,9 @@ public class BallVelocity : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            if(Mathf.Sqrt(speedX*speedX+speedZ*speedZ) >= max_speed * defeatMultiplier)
+            if(speed_direction.magnitude >= max_speed * defeatMultiplier)
             {
-                speedX = 0;
-                speedZ = 0;
+                speed_direction = Vector3.zero;
                 GameManager.Instance.Defeat();
             }
         }
@@ -131,8 +123,7 @@ public class BallVelocity : MonoBehaviour
         {
             return;
         }
-        speedX = Mathf.Lerp(speedX, x * max_speed, Time.deltaTime);
-        speedZ = Mathf.Lerp(speedZ, z * max_speed, Time.deltaTime);
+        speed_direction = Vector3.Lerp(speed_direction,new Vector3(x, 0, z).normalized * max_speed,Time.deltaTime);
 
     }
 
@@ -140,8 +131,7 @@ public class BallVelocity : MonoBehaviour
     {
         if (!isStun)
         {
-            speedX = -speedX * multiplier;
-            speedZ = -speedZ * multiplier;
+            speed_direction = speed_direction * (-multiplier);
             isStun = true;
             StartCoroutine("Stun");
         }
