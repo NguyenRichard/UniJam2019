@@ -85,8 +85,13 @@ public class GameManager : MonoBehaviour
             //On choisis une entree et une sortie aleatoirement
             int i = Random.Range(0, listEntrees2.Count);
             int j = Random.Range(0, listSorties.Count);
+            //swith on the light
+            listEntrees2[i].GetComponent<EntreeManager>().petitBonhommeLightOn();
+            yield return new WaitForSeconds(2);
+            
             PetitBonhommeFactory.Instance.CreatePetitBonhomme(listEntrees2[i].transform, listSorties[j]);
             //Delai de 5s entre chaque spawn de bonhomme
+            listEntrees2[i].GetComponent<EntreeManager>().switchOffLight();
             yield return new WaitForSeconds(5);
         }
     }
@@ -101,8 +106,11 @@ public class GameManager : MonoBehaviour
             //On choisis une entree et une sortie aleatoirement
             int i = Random.Range(0, listEntrees2.Count);
             int j = Random.Range(0, listSorties.Count);
+            listEntrees2[i].GetComponent<EntreeManager>().chevalierLightOn();
+            yield return new WaitForSeconds(2);
             PetitBonhommeFactory.Instance.CreateChevalier(listEntrees2[i].transform, listSorties[j]);
             //Delai de 5s entre chaque spawn de bonhomme
+            listEntrees2[i].GetComponent<EntreeManager>().switchOffLight();
             yield return new WaitForSeconds(10);
         }
     }
