@@ -26,7 +26,7 @@ public class InputController2 : MonoBehaviour
     private void Start()
     {
         ball = GameObject.FindGameObjectWithTag("Ball");
-        Debug.Assert(ballVelocity, "You must add the ball in the scene");
+        Debug.Assert(ballVelocity is null, "You must add the ball in the scene");
         // renderer = testJoystick.GetComponent<Renderer>();
         ballVelocity = ball.GetComponent<BallVelocity>();
         Debug.Assert(ballVelocity, "You must add BallVelocity component to the ball");
@@ -76,8 +76,8 @@ public class InputController2 : MonoBehaviour
 
     void Dash()
     {
-        float posX = Input.GetAxisRaw("DHorizontal");
-        float posY = Input.GetAxisRaw("DVertical");
+        float posX = Input.GetAxis("DHorizontal");
+        float posY = Input.GetAxis("DVertical");
         if (posX != 0 || posY != 0)
         {
             ballVelocity.StartDash(posX, posY);

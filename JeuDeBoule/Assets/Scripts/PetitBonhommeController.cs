@@ -22,6 +22,9 @@ public class PetitBonhommeController : MonoBehaviour
     [SerializeField]
     protected Camera cam;
 
+    [SerializeField]
+    private Collider collider;
+
     public Camera Cam
     {
         set { cam = value; }
@@ -97,6 +100,7 @@ public class PetitBonhommeController : MonoBehaviour
             isDead = true;
             gameManager.UpdateJauge(5);
             Destroy(gameObject, 30);
+            collider.enabled = false;
         }
        
     }
