@@ -66,6 +66,7 @@ public class ChevalierController : MonoBehaviour
 
         if (Vector3.Distance(sortie, gameObject.transform.position) < 1)
         {
+            GameManager.Instance.UpdateJaugeScore(-20);
             Destroy(gameObject);
         }
 
@@ -110,6 +111,7 @@ public class ChevalierController : MonoBehaviour
             agent.enabled = false;
             DeathSound();
             isDead = true;
+            GameManager.Instance.UpdateJaugeScore(10);
             collider.enabled = false;
         }
 

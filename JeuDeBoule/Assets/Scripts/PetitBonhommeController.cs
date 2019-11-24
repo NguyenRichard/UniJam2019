@@ -43,11 +43,9 @@ public class PetitBonhommeController : MonoBehaviour
 
     private bool isDead = false;
 
-    GameManager gameManager;
-
     private void Start()
     {
-        gameManager = GameManager.Instance;
+        GameManager gameManager = GameManager.Instance;
         currentDestination = gameManager.GetCoffre(gameObject.transform.position);
         agent.SetDestination(currentDestination);
         agent.speed = normalSpeed;
@@ -76,7 +74,7 @@ public class PetitBonhommeController : MonoBehaviour
 
         if (Vector3.Distance(sortie, gameObject.transform.position) < 1)
         {
-            gameManager.UpdateJaugeScore(-10);
+            GameManager.Instance.UpdateJaugeScore(-10);
             Destroy(gameObject);
         }
 
@@ -120,7 +118,7 @@ public class PetitBonhommeController : MonoBehaviour
             agent.enabled = false;
             DeathSound();
             isDead = true;
-            gameManager.UpdateJaugeScore(5);
+            GameManager.Instance.UpdateJaugeScore(5);
             Destroy(gameObject, 30);
             collider.enabled = false;
         }

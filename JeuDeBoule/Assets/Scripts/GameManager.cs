@@ -11,9 +11,10 @@ public class GameManager : MonoBehaviour
     GameObject jaugeScore;
 
     [SerializeField]
-    private float delayGameOver = 1;
-
     GameObject jaugeDash;
+
+    [SerializeField]
+    private float delayGameOver = 1;
 
     JaugeController jaugeScoreController;
     JaugeController jaugeDashController;
@@ -63,7 +64,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateJaugeDash(float value)
     {
-        jaugeDashController.Point += value;
+        jaugeDashController.Point = value;
     }
 
     // Start is called before the first frame update
@@ -92,7 +93,7 @@ public class GameManager : MonoBehaviour
 
         // Retrieve jauge controller
         jaugeScoreController = jaugeScore.GetComponent<JaugeController>();
-        jaugeDashController  = jaugeScore.GetComponent<JaugeController>();
+        jaugeDashController  = jaugeDash.GetComponent<JaugeController>();
 
         StartCoroutine(SpawnPetitBonhommeCoroutine());
         StartCoroutine(SpawnChevalierCoroutine());
