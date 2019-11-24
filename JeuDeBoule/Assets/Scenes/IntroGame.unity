@@ -198,6 +198,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Origin
       objectReference: {fileID: 0}
+    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 703377103506551438, guid: cc23f238492fbe840985300202280c92,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -283,21 +298,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
-        type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
-        type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
-        type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc23f238492fbe840985300202280c92, type: 3}
 --- !u!1 &905342218 stripped
@@ -369,6 +369,12 @@ MonoBehaviour:
 --- !u!4 &905342220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 703377104558816741, guid: cc23f238492fbe840985300202280c92,
+    type: 3}
+  m_PrefabInstance: {fileID: 492622750}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &905342221 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 703377104558816762, guid: cc23f238492fbe840985300202280c92,
     type: 3}
   m_PrefabInstance: {fileID: 492622750}
   m_PrefabAsset: {fileID: 0}
@@ -468,8 +474,8 @@ Canvas:
   m_GameObject: {fileID: 1055106789}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 905342221}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
