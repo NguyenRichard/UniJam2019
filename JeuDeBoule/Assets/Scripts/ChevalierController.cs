@@ -8,6 +8,12 @@ public class ChevalierController : MonoBehaviour
     [SerializeField]
     AudioClip laMort;
     [SerializeField]
+    AudioClip laMort2;
+    [SerializeField]
+    AudioClip laMort3;
+    [SerializeField]
+    AudioClip laMort4;
+    [SerializeField]
     AudioClip apparition;
     [SerializeField]
     AudioClip disparition;
@@ -69,6 +75,32 @@ public class ChevalierController : MonoBehaviour
         }
 
     }
+
+    private void DeathSound()
+    {
+        int i = Random.Range(0, 2);
+        switch (i)
+        {
+            case 0:
+                audioSource.clip = laMort;
+                break;
+            case 1:
+                audioSource.clip = laMort2;
+                break;
+            case 2:
+                audioSource.clip = laMort3;
+                break;
+            case 3:
+                audioSource.clip = laMort4;
+                break;
+
+            default:
+                audioSource.clip = laMort;
+                break;
+        }
+        audioSource.Play();
+    }
+
     public void Die()
     {
         if (!isDead)
@@ -76,8 +108,7 @@ public class ChevalierController : MonoBehaviour
             chevalierAnimator.Die();
             agent.speed = 0;
             agent.enabled = false;
-            audioSource.clip = laMort;
-            audioSource.Play();
+            DeathSound();
             isDead = true;
             collider.enabled = false;
         }
